@@ -1,7 +1,7 @@
 "use client";
 
 import { Grid } from "@mui/material";
-import { Introduction } from "../../Components/Instructions/lessons/Introduction";
+import { Introduction } from "./Introduction";
 
 const StartPage = () => {
   return (
