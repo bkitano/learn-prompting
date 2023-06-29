@@ -1,8 +1,34 @@
 import { AppBar, Button, Grid, Toolbar } from "@mui/material";
-import { usePage } from "./PageContext";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const pageRouter = (link: string): (string | null)[] => {
+  switch (link) {
+    case "/start":
+      return [null, "/the-problem"];
+    case "/the-problem":
+      return ["/start", "/your-mission"];
+    default:
+      return [null, null];
+  }
+};
+
+const pageNumber = (link: string): number => {
+  switch (link) {
+    case "/start":
+      return 1;
+    case "/the-problem":
+      return 2;
+    default:
+      return 0;
+  }
+};
 
 const BottomNav = () => {
-  const { page, pageForward, pageBackward } = usePage();
+  const pathname = usePathname();
+  const [prevHref, nextHref] = pageRouter(pathname);
+  const page = pageNumber(pathname);
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -15,15 +41,19 @@ const BottomNav = () => {
           alignItems={"center"}
         >
           <Grid item>
-            <Button variant="contained" onClick={pageBackward}>
-              Previous
-            </Button>
+            {prevHref && (
+              <Link href={prevHref}>
+                <Button variant="contained">Previous</Button>
+              </Link>
+            )}
           </Grid>
-          <Grid item>Page {page + 1}</Grid>
+          <Grid item>Page {page}</Grid>
           <Grid item>
-            <Button variant="contained" onClick={pageForward}>
-              Next
-            </Button>
+            {nextHref && (
+              <Link href={nextHref}>
+                <Button variant="contained">Next</Button>
+              </Link>
+            )}
           </Grid>
         </Grid>
       </Toolbar>

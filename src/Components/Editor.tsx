@@ -1,15 +1,9 @@
-import { InputBase, TextField } from "@mui/material";
+import { InputBase } from "@mui/material";
 import { useState } from "react";
-import { usePage } from "./PageContext";
 
 const Editor = (props: { initialValue: string }) => {
   const { initialValue } = props;
   const [value, setValue] = useState(initialValue);
-
-  const { page } = usePage();
-  if (page === 0 || page === 1) {
-    return null;
-  }
 
   return (
     <>

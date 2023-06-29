@@ -1,13 +1,15 @@
-import { Grid } from "@mui/material";
-import { Editor } from "./Editor";
-import { Instructions } from "./Instructions/Instructions";
-import { TestCases } from "./TestCases";
+"use client";
 
-const Board = () => {
+import { ProblemDescription } from "@/Components/Instructions/lessons/ProblemDescription";
+import { Grid } from "@mui/material";
+import { Editor } from "../../Components/Editor";
+import { TestCases } from "../../Components/TestCases";
+
+export default function TheProblem() {
   return (
     <Grid container padding={5} spacing={2}>
       <Grid item xs={12} sm={6}>
-        <Instructions />
+        <ProblemDescription />
       </Grid>
       <Grid item xs={12} sm={6}>
         <Editor
@@ -19,6 +21,4 @@ const Board = () => {
       </Grid>
     </Grid>
   );
-};
-
-export { Board };
+}

@@ -11,7 +11,6 @@ import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
 import { testCases as defaultTestCases } from "@/resources/testCases";
 import { Collapse, IconButton, Typography } from "@mui/material";
-import { usePage } from "./PageContext";
 
 type TestCase = {
   description: string;
@@ -21,11 +20,6 @@ type TestCase = {
 };
 
 const TestCases = () => {
-  const { page } = usePage();
-  if (page === 0) {
-    return null;
-  }
-
   const [testCases, setTestCases] = useState<TestCase[]>(defaultTestCases);
   return (
     <TestCasesView
