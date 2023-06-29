@@ -25,11 +25,44 @@ export default function Home() {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-      <Grid container padding={2} spacing={2} style={{
-        minHeight: "calc(100vh - 64px)",
-      }}>
+      <Grid
+        container
+        padding={2}
+        spacing={2}
+        style={{
+          minHeight: "calc(100vh - 64px)",
+        }}
+      >
         <Grid item xs={12} sm={6}>
           <Instructions page={page} />
+          <Grid
+            container
+            style={{
+              width: "100%",
+            }}
+            justifyContent={"space-between"}
+          >
+            <Grid item>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setPage(Math.max(0, page - 1));
+                }}
+              >
+                Previous
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="contained"
+                onClick={() => {
+                  setPage(Math.min(page + 1, 8));
+                }}
+              >
+                Next
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
         <Grid item xs={12} sm={6}>
           <Editor
