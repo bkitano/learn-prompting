@@ -11,6 +11,7 @@ import {
   BottomNavigation,
 } from "@mui/material";
 import { useState } from "react";
+import { BottomNav } from "@/Components/BottomNav";
 
 export default function Home() {
   const [page, setPage] = useState(0);
@@ -41,41 +42,6 @@ export default function Home() {
     </Grid>
   );
 
-  const bottomNav = (
-    <AppBar position="static">
-      <Toolbar>
-        <Grid
-          container
-          style={{
-            width: "100%",
-          }}
-          justifyContent={"space-between"}
-        >
-          <Grid item>
-            <Button
-              variant="contained"
-              onClick={() => {
-                setPage(Math.max(0, page - 1));
-              }}
-            >
-              Previous
-            </Button>
-          </Grid>
-          <Grid item>
-            <Button
-              variant="contained"
-              onClick={() => {
-                setPage(Math.min(page + 1, 8));
-              }}
-            >
-              Next
-            </Button>
-          </Grid>
-        </Grid>
-      </Toolbar>
-    </AppBar>
-  );
-
   return (
     <>
       <Grid
@@ -91,7 +57,14 @@ export default function Home() {
           {topNav}
           {body}
         </Grid>
-        <Grid item>{bottomNav}</Grid>
+        <Grid item>
+          <BottomNav
+            {...{
+              page,
+              setPage,
+            }}
+          />
+        </Grid>
       </Grid>
     </>
   );
