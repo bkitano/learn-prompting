@@ -1,11 +1,8 @@
-import page from "@/app/page";
 import { AppBar, Button, Grid, Toolbar } from "@mui/material";
+import { usePage } from "./PageContext";
 
-const BottomNav = (props: {
-  page: number;
-  setPage: (page: number) => void;
-}) => {
-  const { page, setPage } = props;
+const BottomNav = () => {
+  const { page, pageForward, pageBackward } = usePage();
   return (
     <AppBar position="static">
       <Toolbar>
@@ -18,23 +15,13 @@ const BottomNav = (props: {
           alignItems={"center"}
         >
           <Grid item>
-            <Button
-              variant="contained"
-              onClick={() => {
-                setPage(Math.max(0, page - 1));
-              }}
-            >
+            <Button variant="contained" onClick={pageBackward}>
               Previous
             </Button>
           </Grid>
           <Grid item>Page {page + 1}</Grid>
           <Grid item>
-            <Button
-              variant="contained"
-              onClick={() => {
-                setPage(Math.min(page + 1, 8));
-              }}
-            >
+            <Button variant="contained" onClick={pageForward}>
               Next
             </Button>
           </Grid>

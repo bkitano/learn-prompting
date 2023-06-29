@@ -3,47 +3,15 @@
 import Grid from "@mui/material/Grid";
 import { Editor } from "../../Components/Editor";
 import { Instructions } from "../../Components/Instructions/Instructions";
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  Button,
-  BottomNavigation,
-} from "@mui/material";
 import { useState } from "react";
 import { BottomNav } from "@/Components/BottomNav";
+import { TopNav } from "@/Components/TopNav";
+import { Board } from "@/Components/Board";
+import { PageProvider } from "@/Components/PageContext";
 
 export default function Home() {
-  const [page, setPage] = useState(0);
-
-  const topNav = (
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Code Editor
-        </Typography>
-        <Button color="inherit">Login</Button>
-      </Toolbar>
-    </AppBar>
-  );
-
-  const body = (
-    <Grid container padding={2} spacing={2}>
-      <Grid item xs={12} sm={6}>
-        <Instructions page={page} />
-      </Grid>
-      <Grid item xs={12} sm={6}>
-        <Editor
-          {...{
-            initialValue: `// Welcome to the Code Editor!`,
-          }}
-        />
-      </Grid>
-    </Grid>
-  );
-
   return (
-    <>
+    <PageProvider>
       <Grid
         container
         direction={"column"}
@@ -54,18 +22,13 @@ export default function Home() {
         }}
       >
         <Grid item>
-          {topNav}
-          {body}
+          <TopNav />
+          <Board />
         </Grid>
         <Grid item>
-          <BottomNav
-            {...{
-              page,
-              setPage,
-            }}
-          />
+          <BottomNav />
         </Grid>
       </Grid>
-    </>
+    </PageProvider>
   );
 }

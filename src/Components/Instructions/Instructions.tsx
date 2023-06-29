@@ -1,6 +1,8 @@
+import { usePage } from "../PageContext";
 import { Introduction } from "./lessons/Introduction";
 
-const Instructions = (props: { page: number }) => {
+const Instructions = () => {
+  const { page } = usePage();
   const LessonsMap: Record<number, JSX.Element> = {
     0: <Introduction />,
   };
@@ -8,8 +10,8 @@ const Instructions = (props: { page: number }) => {
   return (
     <>
       <h1>Instructions</h1>
-      <p>Page: {props.page}</p>
-      {LessonsMap[props.page]}
+      <p>Page: {page + 1}</p>
+      {LessonsMap[page]}
     </>
   );
 };
