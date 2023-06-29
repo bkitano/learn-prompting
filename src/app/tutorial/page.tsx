@@ -3,7 +3,13 @@
 import Grid from "@mui/material/Grid";
 import { Editor } from "../../Components/Editor";
 import { Instructions } from "../../Components/Instructions/Instructions";
-import { AppBar, Toolbar, Typography, Button } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  BottomNavigation,
+} from "@mui/material";
 import { useState } from "react";
 
 export default function Home() {
@@ -19,12 +25,16 @@ export default function Home() {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-      <Grid container>
+      <Grid container padding={2} spacing={2}>
         <Grid item xs={12} sm={6}>
           <Instructions page={page} />
         </Grid>
         <Grid item xs={12} sm={6}>
-          <Editor />
+          <Editor
+            {...{
+              initialValue: `// Welcome to the Code Editor!`,
+            }}
+          />
         </Grid>
       </Grid>
     </>
