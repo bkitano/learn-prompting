@@ -7,13 +7,9 @@ const Instructions = () => {
     0: <Introduction />,
   };
 
-  return (
-    <>
-      <h1>Instructions</h1>
-      <p>Page: {page + 1}</p>
-      {LessonsMap[page]}
-    </>
-  );
+  return <div style={{
+    width: "90%",
+  }}>{LessonsMap[page]}</div>;
 };
 
 export { Instructions };

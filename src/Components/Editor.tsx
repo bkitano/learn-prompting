@@ -1,9 +1,15 @@
 import { InputBase, TextField } from "@mui/material";
 import { useState } from "react";
+import { usePage } from "./PageContext";
 
 const Editor = (props: { initialValue: string }) => {
   const { initialValue } = props;
   const [value, setValue] = useState(initialValue);
+
+  const { page } = usePage();
+  if (page === 0 || page === 1) {
+    return null;
+  }
 
   return (
     <>
@@ -24,7 +30,7 @@ const Editor = (props: { initialValue: string }) => {
           minHeight: "calc(50vh)",
           whiteSpace: "pre-wrap",
         }}
-        >
+      >
         <InputBase
           id="input"
           style={{
