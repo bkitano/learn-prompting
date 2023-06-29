@@ -3,14 +3,22 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const pageRouter = (link: string): (string | null)[] => {
-  switch (link) {
-    case "/start":
-      return [null, "/the-problem"];
-    case "/the-problem":
-      return ["/start", "/your-mission"];
-    default:
-      return [null, null];
-  }
+  const pages = [
+    "/start",
+    "/the-problem",
+    "/meet-prompt-editor",
+    "/running-tests",
+    "/asking-specifics",
+    "/output-formatting",
+    "/few-shot",
+    "/step-by-step",
+  ];
+
+  const index = pages.indexOf(link);
+  return [
+    index > 0 ? pages[index - 1] : null,
+    index < pages.length - 1 ? pages[index + 1] : null,
+  ];
 };
 
 const pageNumber = (link: string): number => {
