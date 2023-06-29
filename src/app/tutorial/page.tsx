@@ -25,7 +25,9 @@ export default function Home() {
           <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
-      <Grid container padding={2} spacing={2}>
+      <Grid container padding={2} spacing={2} style={{
+        minHeight: "calc(100vh - 64px)",
+      }}>
         <Grid item xs={12} sm={6}>
           <Instructions page={page} />
         </Grid>
