@@ -1,6 +1,7 @@
 import { Grid } from "@mui/material";
 import { Editor } from "./Editor";
 import { Instructions } from "./Instructions/Instructions";
+import { TestCases } from "./TestCases";
 
 const Board = () => {
   return (
@@ -14,6 +15,7 @@ const Board = () => {
             initialValue: `// Welcome to the Code Editor!`,
           }}
         />
+        <TestCases />
       </Grid>
     </Grid>
   );
