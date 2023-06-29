@@ -15,62 +15,83 @@ import { useState } from "react";
 export default function Home() {
   const [page, setPage] = useState(0);
 
-  return (
-    <>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Code Editor
-          </Typography>
-          <Button color="inherit">Login</Button>
-        </Toolbar>
-      </AppBar>
-      <Grid
-        container
-        padding={2}
-        spacing={2}
-        style={{
-          minHeight: "calc(100vh - 64px)",
-        }}
-      >
-        <Grid item xs={12} sm={6}>
-          <Instructions page={page} />
-          <Grid
-            container
-            style={{
-              width: "100%",
-            }}
-            justifyContent={"space-between"}
-          >
-            <Grid item>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  setPage(Math.max(0, page - 1));
-                }}
-              >
-                Previous
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                variant="contained"
-                onClick={() => {
-                  setPage(Math.min(page + 1, 8));
-                }}
-              >
-                Next
-              </Button>
-            </Grid>
+  const topNav = (
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          Code Editor
+        </Typography>
+        <Button color="inherit">Login</Button>
+      </Toolbar>
+    </AppBar>
+  );
+
+  const body = (
+    <Grid container padding={2} spacing={2}>
+      <Grid item xs={12} sm={6}>
+        <Instructions page={page} />
+      </Grid>
+      <Grid item xs={12} sm={6}>
+        <Editor
+          {...{
+            initialValue: `// Welcome to the Code Editor!`,
+          }}
+        />
+      </Grid>
+    </Grid>
+  );
+
+  const bottomNav = (
+    <AppBar position="static">
+      <Toolbar>
+        <Grid
+          container
+          style={{
+            width: "100%",
+          }}
+          justifyContent={"space-between"}
+        >
+          <Grid item>
+            <Button
+              variant="contained"
+              onClick={() => {
+                setPage(Math.max(0, page - 1));
+              }}
+            >
+              Previous
+            </Button>
+          </Grid>
+          <Grid item>
+            <Button
+              variant="contained"
+              onClick={() => {
+                setPage(Math.min(page + 1, 8));
+              }}
+            >
+              Next
+            </Button>
           </Grid>
         </Grid>
-        <Grid item xs={12} sm={6}>
-          <Editor
-            {...{
-              initialValue: `// Welcome to the Code Editor!`,
-            }}
-          />
+      </Toolbar>
+    </AppBar>
+  );
+
+  return (
+    <>
+      <Grid
+        container
+        direction={"column"}
+        justifyContent={"space-between"}
+        style={{
+          height: "100vh",
+          width: "100vw",
+        }}
+      >
+        <Grid item>
+          {topNav}
+          {body}
         </Grid>
+        <Grid item>{bottomNav}</Grid>
       </Grid>
     </>
   );
