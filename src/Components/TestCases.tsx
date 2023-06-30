@@ -14,6 +14,7 @@ import {
   Card,
   CardContent,
   CardHeader,
+  CircularProgress,
   Collapse,
   Grid,
   IconButton,
@@ -21,23 +22,31 @@ import {
 } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
 
-const TestCaseAnswer = (props: { answer?: boolean; correct?: boolean }) => {
-  if (props.answer === undefined) {
-    return null;
-  }
-  if (props.correct !== undefined) {
-    return props.correct ? (
-      <span style={{ color: "green" }}>{String(props.answer)}</span>
-    ) : (
-      <span style={{ color: "red" }}>{String(props.answer)}</span>
-    );
-  } else {
-    return <span>{String(props.answer)}</span>;
-  }
-};
+// const TestCaseAnswer = (props: {
+//   correctAnswer?: boolean;
+//   correctResponse?: boolean;
+//   loading: boolean;
+// }) => {
+//   const { loading, correctAnswer, correctResponse } = props;
+//   if (loading) {
+//     return <CircularProgress />;
+//   }
+//   if (answer === undefined) {
+//     return null;
+//   }
+//   if (correct !== undefined) {
+//     return correct ? (
+//       <span style={{ color: "green" }}>{answer}</span>
+//     ) : (
+//       <span style={{ color: "red" }}>{answer}</span>
+//     );
+//   } else {
+//     return <span>{answer}</span>;
+//   }
+// };
 
-const TestCaseRow = (props: { testCase: TestCase }) => {
-  const { testCase } = props;
+const TestCaseRow = (props: { testCase: TestCase; loading?: boolean }) => {
+  const { testCase, loading } = props;
   const [open, setOpen] = useState(false);
   return (
     <>
@@ -55,10 +64,14 @@ const TestCaseRow = (props: { testCase: TestCase }) => {
         >
           {testCase.action}
         </TableCell>
+        <TableCell align="center">{String(testCase.correctAnswer)}</TableCell>
         <TableCell align="center">
-          <TestCaseAnswer {...{ answer: testCase.correctAnswer }} />
+          {loading ? (
+            <CircularProgress />
+          ) : loading === undefined ? null : (
+            testCase.response
+          )}
         </TableCell>
-        <TableCell align="center">{testCase.response}</TableCell>
       </TableRow>
     </>
   );
@@ -70,6 +83,7 @@ const TestCasesView = (props: {
   open?: boolean;
   runCases?: () => Promise<void>;
   runButtonDisabled?: boolean;
+  loading?: boolean;
 }) => {
   const {
     testCases = defaultTestCases,
@@ -77,6 +91,7 @@ const TestCasesView = (props: {
     runCases,
     runButtonDisabled = false,
     hideRunButton = false,
+    loading = false,
   } = props;
 
   const [expanded, setExpanded] = useState<boolean>(open);
@@ -146,7 +161,11 @@ const TestCasesView = (props: {
               </TableHead>
               <TableBody>
                 {testCases.map((testCase, index) => (
-                  <TestCaseRow key={index} {...{ testCase }} />
+                  <TestCaseRow
+                    key={index}
+                    loading={loading}
+                    {...{ testCase }}
+                  />
                 ))}
               </TableBody>
             </Table>

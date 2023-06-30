@@ -12,8 +12,10 @@ export default function Page() {
   const [prompt, setPrompt] = useState<string | null>(null);
 
   const [testCases, setTestCases] = useState<TestCase[]>(defaultTestCases);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const runCases = async (cases: TestCase[]) => {
+    setLoading(true);
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/v1/batch`,
       {
@@ -35,6 +37,7 @@ export default function Page() {
         response: completions[index].completion.text,
       };
     });
+    setLoading(false);
     setTestCases(newCases);
   };
 
@@ -57,6 +60,7 @@ export default function Page() {
         <TestCasesView
           {...{
             testCases,
+            loading,
             runCases: () => runCases(testCases),
             runButtonDisabled: prompt === null || prompt === "",
           }}
