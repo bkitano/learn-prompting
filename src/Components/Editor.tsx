@@ -20,7 +20,12 @@ const getPromptCompletion = async (request: {
   return response;
 };
 
-const Editor = (props: { initialValue: string }) => {
+const Editor = (props: {
+  initialValue: string;
+  placeholder?: string;
+  onPromptChange?: (prompt: string) => void;
+}) => {
+  const { initialValue, placeholder, onPromptChange } = props;
   const [responseValue, setResponseValue] = useState<string | null>(null);
 
   const handleSubmit = async (value: string) => {
@@ -43,8 +48,10 @@ const Editor = (props: { initialValue: string }) => {
         <Grid item xs={12}>
           <EditorView
             {...{
-              initialValue: props.initialValue,
               handleSubmit,
+              initialValue,
+              placeholder,
+              onPromptChange,
             }}
           />
         </Grid>
@@ -58,9 +65,11 @@ const Editor = (props: { initialValue: string }) => {
 
 const EditorView = (props: {
   initialValue: string;
+  placeholder?: string;
   handleSubmit: (value: string) => void;
+  onPromptChange?: (prompt: string) => void;
 }) => {
-  const { initialValue, handleSubmit } = props;
+  const { initialValue, handleSubmit, placeholder, onPromptChange } = props;
   const [value, setValue] = useState(initialValue);
 
   return (
@@ -105,6 +114,7 @@ const EditorView = (props: {
                   handleSubmit(value);
                 }
               }}
+              placeholder={placeholder}
               style={{
                 width: "100%",
                 fontFamily: "monospace",
@@ -113,7 +123,10 @@ const EditorView = (props: {
               }}
               multiline
               value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={(e) => {
+                setValue(e.target.value);
+                onPromptChange && onPromptChange(e.target.value);
+              }}
             />
           </div>
           <div

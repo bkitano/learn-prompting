@@ -10,7 +10,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
-import { testCases as defaultTestCases } from "@/resources/testCases";
+import { TestCase, testCases as defaultTestCases } from "@/resources/testCases";
 import {
   Button,
   Card,
@@ -22,27 +22,6 @@ import {
   Typography,
 } from "@mui/material";
 import { ExpandMore } from "@mui/icons-material";
-
-type TestCase = {
-  description: string;
-  correctAnswer: boolean;
-  promptAnswer?: boolean;
-  explanation?: string;
-};
-
-const TestCases = (props: { showRunButton?: boolean; open?: boolean }) => {
-  const { showRunButton, open } = props;
-  const [testCases, setTestCases] = useState<TestCase[]>(defaultTestCases);
-  return (
-    <TestCasesView
-      {...{
-        testCases,
-        showRunButton,
-        open,
-      }}
-    />
-  );
-};
 
 const TestCaseAnswer = (props: { answer?: boolean; correct?: boolean }) => {
   if (props.answer === undefined) {
@@ -65,32 +44,68 @@ const TestCaseRow = (props: { testCase: TestCase }) => {
   return (
     <>
       <TableRow
-        key={testCase.description}
+        key={testCase.case}
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
       >
-        <TableCell>
-          <IconButton
-            aria-label="expand row"
-            size="small"
-            onClick={() => setOpen(!open)}
-          >
-            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-          </IconButton>
-        </TableCell>
-        <TableCell component="th" scope="row">
-          {testCase.description}
+        <TableCell
+          component="th"
+          scope="row"
+          style={{
+            maxHeight: "5px",
+            overflow: "hidden",
+          }}
+        >
+          {testCase.case}
         </TableCell>
         <TableCell align="center">
           <TestCaseAnswer {...{ answer: testCase.correctAnswer }} />
         </TableCell>
         <TableCell align="center">{testCase.promptAnswer}</TableCell>
       </TableRow>
-      <TableRow>
-        <TableCell>
-          <Collapse>{testCase.explanation}</Collapse>
-        </TableCell>
-      </TableRow>
     </>
+  );
+};
+
+const TestCases = (props: {
+  showRunButton?: boolean;
+  open?: boolean;
+  runButtonDisabled?: boolean;
+}) => {
+  const { showRunButton, open, runButtonDisabled } = props;
+  const [testCases, setTestCases] = useState<TestCase[]>(defaultTestCases);
+
+  const [testCaseResults, setTestCaseResults] = useState<TestCase[] | null>(
+    null
+  );
+
+  const runCases = async (cases: TestCase[]) => {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/v1/batch`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          prompt: prompt,
+          inputs: cases,
+        }),
+      }
+    );
+
+    console.log(response.json());
+  };
+
+  return (
+    <TestCasesView
+      {...{
+        testCases,
+        showRunButton,
+        open,
+        runCases,
+        runButtonDisabled,
+      }}
+    />
   );
 };
 
@@ -98,8 +113,16 @@ const TestCasesView = (props: {
   testCases: TestCase[];
   showRunButton?: boolean;
   open?: boolean;
+  runCases: (cases: TestCase[]) => Promise<void>;
+  runButtonDisabled?: boolean;
 }) => {
-  const { testCases, showRunButton = true, open = false } = props;
+  const {
+    testCases,
+    showRunButton = true,
+    open = false,
+    runCases,
+    runButtonDisabled = false,
+  } = props;
 
   const [expanded, setExpanded] = useState<boolean>(open);
   const handleExpandClick = () => {
@@ -114,29 +137,34 @@ const TestCasesView = (props: {
             container
             justifyContent={"space-between"}
             alignItems={"center"}
+            spacing={5}
           >
-            <Grid item xs={1}>
-              <IconButton onClick={handleExpandClick}>
-                <ExpandMore />
-              </IconButton>
+            <Grid item>
+              <Grid container alignItems={"center"} spacing={2}>
+                <Grid item>
+                  <IconButton onClick={handleExpandClick}>
+                    <ExpandMore />
+                  </IconButton>
+                </Grid>
+                <Grid item>
+                  <Typography variant="h5">Test cases</Typography>
+                </Grid>
+              </Grid>
             </Grid>
-            <Grid item xs={10}>
-              <Typography variant="h5">Test cases</Typography>
-            </Grid>
-            <Grid item xs={1}></Grid>
+            {showRunButton && (
+              <Grid item>
+                <Button
+                  variant="contained"
+                  disabled={runButtonDisabled}
+                  onClick={() => {
+                    runCases(testCases);
+                  }}
+                >
+                  Run Cases
+                </Button>
+              </Grid>
+            )}
           </Grid>
-        }
-        action={
-          showRunButton && (
-            <Button
-              variant="contained"
-              onClick={() => {
-                console.log("run");
-              }}
-            >
-              Run Cases
-            </Button>
-          )
         }
       />
       <Collapse in={expanded}>
@@ -145,9 +173,12 @@ const TestCasesView = (props: {
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell />
                   <TableCell>
-                    <Typography variant="h6">Description</Typography>
+                    <Typography
+                      style={{
+                        fontFamily: "monospace",
+                      }}
+                    >{`{{action}}`}</Typography>
                   </TableCell>
                   <TableCell align="center">
                     <Typography variant="h6">Correct Answer</Typography>
