@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 const ResponseViewer = (props: { value: string | null }) => {
   const { value } = props;
@@ -11,7 +11,11 @@ const ResponseViewer = (props: { value: string | null }) => {
         padding: "10px",
       }}
     >
-      {value ? value : <em>Waiting...</em>}
+      <Typography style={{
+        whiteSpace: "pre-wrap",
+      }}>
+        {value ? value.trim() : <em>Waiting...</em>}
+        </Typography>
     </Box>
   );
 };

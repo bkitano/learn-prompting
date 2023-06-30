@@ -2,19 +2,40 @@ import { Box, Button, Grid, InputBase } from "@mui/material";
 import { useEffect, useState } from "react";
 import { ResponseViewer } from "./ResponseViewer";
 
-const Editor = () => {
+const getPromptCompletion = async (request: {
+  prompt: string;
+  inputs: Record<string, string>;
+}): Promise<any> => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/v1/submit`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(request),
+    }
+  );
+
+  return response;
+};
+
+const Editor = (props: { initialValue: string }) => {
   const [responseValue, setResponseValue] = useState<string | null>(null);
-  const [submittedValue, setSubmittedValue] = useState<string | null>(null);
 
-  const handleSubmit = (value: string) => {
-    setSubmittedValue(value);
+  const handleSubmit = async (value: string) => {
+    if (!value) return;
+
+    const response = await getPromptCompletion({
+      prompt: value,
+      inputs: {},
+    }).then((response) => {
+      return response.json();
+    });
+
+    const { completion } = response;
+    setResponseValue(completion);
   };
-
-  useEffect(() => {
-    if (!submittedValue) return;
-    const response = Math.random().toString(36);
-    setResponseValue(response);
-  }, [submittedValue]);
 
   return (
     <>
@@ -22,7 +43,7 @@ const Editor = () => {
         <Grid item xs={12}>
           <EditorView
             {...{
-              initialValue: "",
+              initialValue: props.initialValue,
               handleSubmit,
             }}
           />

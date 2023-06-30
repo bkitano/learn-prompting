@@ -14,7 +14,7 @@ export default function Page() {
       <Grid item xs={12} sm={6}>
         <Editor
           {...{
-            initialValue: "Hello!!",
+            initialValue: "Write me a poem about dinosaurs.",
           }}
         />
         <br />
