@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
 
-const ResponseViewer = () => {
+const ResponseViewer = (props: { value: string | null }) => {
+  const { value } = props;
   return (
     <Box
       style={{
@@ -10,7 +11,7 @@ const ResponseViewer = () => {
         padding: "10px",
       }}
     >
-      asdf
+      {value ? value : <em>Waiting...</em>}
     </Box>
   );
 };
