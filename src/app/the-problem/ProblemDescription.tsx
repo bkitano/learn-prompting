@@ -7,8 +7,7 @@ const ProblemDescription = () => {
         The Challenge
       </Typography>
       <Typography variant="h5">
-        As we delve deeper into LLMs and prompting, let's begin by setting up
-        the challenge we're tackling.
+        Let's begin by setting up the challenge we're tackling.
       </Typography>
       <br />
       <Typography variant="body1">
@@ -24,6 +23,48 @@ const ProblemDescription = () => {
         that all our employees are following the company's rules and
         regulations.
       </Typography>
+      <br />
+      <Typography variant="body1">
+        Here's an example of a compliant action:
+      </Typography>
+      <br />
+      <div
+        style={{
+          padding: "15px",
+          backgroundColor: "#282c34",
+          border: "2px solid white",
+          borderRadius: "5px",
+        }}
+      >
+        <Typography
+          style={{
+            fontFamily: "monospace",
+          }}
+        >
+          I am going to eat a banana.
+        </Typography>
+      </div>
+      <br />
+      <Typography variant="body1">
+        And here's an example of a non-compliant action:
+      </Typography>
+      <br />
+      <div
+        style={{
+          padding: "15px",
+          backgroundColor: "#282c34",
+          border: "2px solid white",
+          borderRadius: "5px",
+        }}
+      >
+        <Typography
+          style={{
+            fontFamily: "monospace",
+          }}
+        >
+          I am going to drag race in the parking lot.
+        </Typography>
+      </div>
       <br />
       <Typography variant="body1">
         As lawyers, we're experts in the field of compliance. But we have better
