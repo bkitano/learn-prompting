@@ -35,12 +35,15 @@ const Editor = (props: {
 }) => {
   const { initialValue, placeholder, onPromptChange, runDisabled } = props;
   const [responseValue, setResponseValue] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (
     value: string,
     inputs?: Record<string, string>
   ) => {
     if (!value) return;
+
+    setLoading(true);
 
     const response = await getPromptCompletion({
       prompt: value,
@@ -68,7 +71,7 @@ const Editor = (props: {
           />
         </Grid>
         <Grid item xs={12}>
-          <ResponseViewer value={responseValue} />
+          <ResponseViewer value={responseValue} loading={loading} />
         </Grid>
       </Grid>
     </>

@@ -7,6 +7,7 @@ const PAGES = [
   "/the-problem",
   "/test-cases",
   "/meet-prompt-editor",
+  "/prompt-variables",
   "/running-tests",
   "/asking-specifics",
   "/output-formatting",

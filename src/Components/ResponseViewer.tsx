@@ -1,7 +1,7 @@
-import { Box, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 
-const ResponseViewer = (props: { value: string | null }) => {
-  const { value } = props;
+const ResponseViewer = (props: { loading?: boolean; value: string | null }) => {
+  const { loading = false, value = null } = props;
   return (
     <Box
       style={{
@@ -9,13 +9,23 @@ const ResponseViewer = (props: { value: string | null }) => {
         border: "2px solid white",
         borderRadius: "5px",
         padding: "10px",
+        maxHeight: "200px",
+        overflow: "auto",
       }}
     >
-      <Typography style={{
-        whiteSpace: "pre-wrap",
-      }}>
-        {value ? value.trim() : <em>Waiting...</em>}
+      {value ? (
+        <Typography
+          style={{
+            whiteSpace: "pre-wrap",
+          }}
+        >
+          {value.trim()}
         </Typography>
+      ) : loading ? (
+        <CircularProgress />
+      ) : (
+        <em>Waiting...</em>
+      )}
     </Box>
   );
 };
