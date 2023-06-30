@@ -14,10 +14,21 @@ export default function Page() {
       <Grid item xs={12} sm={6}>
         <Editor
           {...{
-            initialValue: "",
+            initialValue: "Hello!!",
           }}
         />
-        <TestCases />
+        <br />
+        <div
+          style={{
+            opacity: 0.3,
+          }}
+        >
+          <TestCases
+            {...{
+              showRunButton: false,
+            }}
+          />
+        </div>
       </Grid>
     </Grid>
   );

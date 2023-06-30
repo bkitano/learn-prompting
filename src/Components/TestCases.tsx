@@ -9,15 +9,13 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { testCases as defaultTestCases } from "@/resources/testCases";
 import {
   Button,
   Card,
   CardContent,
   CardHeader,
-  Checkbox,
   Collapse,
   Grid,
   IconButton,

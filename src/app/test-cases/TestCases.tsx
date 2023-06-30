@@ -40,12 +40,9 @@ export const TestCases = () => (
     <Typography>
       Testing with examples is the easiest way to see if a language model is
       doing what we want it to do. We call these examples{" "}
-      <span style={{ fontWeight: "bold" }}>test cases</span>.
-    </Typography>
-    <br />
-    <Typography>
-      We've picked a set of {testCases.length} cases that span a variety of
-      situations. We've also classified each case as{" "}
+      <span style={{ fontWeight: "bold" }}>test cases</span>. We've picked a set
+      of {testCases.length} cases that span a variety of situations. We've also
+      classified each case as{" "}
       <span style={{ fontWeight: "bold" }}>compliant</span> or{" "}
       <span style={{ fontWeight: "bold" }}>non-compliant</span> with the FCPA.
     </Typography>
