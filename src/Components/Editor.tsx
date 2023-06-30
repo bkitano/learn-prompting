@@ -1,4 +1,11 @@
-import { Box, Button, Grid, InputBase } from "@mui/material";
+import {
+  Box,
+  Button,
+  Grid,
+  InputBase,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useEffect, useState } from "react";
 import { ResponseViewer } from "./ResponseViewer";
 
@@ -23,17 +30,21 @@ const getPromptCompletion = async (request: {
 const Editor = (props: {
   initialValue: string;
   placeholder?: string;
+  runDisabled?: boolean;
   onPromptChange?: (prompt: string) => void;
 }) => {
-  const { initialValue, placeholder, onPromptChange } = props;
+  const { initialValue, placeholder, onPromptChange, runDisabled } = props;
   const [responseValue, setResponseValue] = useState<string | null>(null);
 
-  const handleSubmit = async (value: string) => {
+  const handleSubmit = async (
+    value: string,
+    inputs?: Record<string, string>
+  ) => {
     if (!value) return;
 
     const response = await getPromptCompletion({
       prompt: value,
-      inputs: {},
+      inputs: inputs || {},
     }).then((response) => {
       return response.json();
     });
@@ -52,6 +63,7 @@ const Editor = (props: {
               initialValue,
               placeholder,
               onPromptChange,
+              runDisabled,
             }}
           />
         </Grid>
@@ -66,11 +78,72 @@ const Editor = (props: {
 const EditorView = (props: {
   initialValue: string;
   placeholder?: string;
-  handleSubmit: (value: string) => void;
+  handleSubmit: (value: string, inputs?: Record<string, string>) => void;
   onPromptChange?: (prompt: string) => void;
+  runDisabled?: boolean;
 }) => {
-  const { initialValue, handleSubmit, placeholder, onPromptChange } = props;
-  const [value, setValue] = useState(initialValue);
+  const {
+    initialValue,
+    handleSubmit,
+    placeholder,
+    onPromptChange,
+    runDisabled = false,
+  } = props;
+  const [prompt, setValue] = useState(initialValue);
+  const [promptVariableSection, setPromptVariableSection] = useState<any>(null);
+  const [promptVariableKey, setPromptVariableKey] = useState<string | null>(
+    null
+  );
+  const [promptVariableValue, setPromptVariableValue] = useState<
+    string | null | undefined
+  >(undefined);
+
+  // this effect will show a selector if a double bracket variable is detected in the prompt,
+  // and it will show one for each variable detected.
+  useEffect(() => {
+    if (prompt) {
+      const regex = /{{(.*?)}}/g;
+      const matches = prompt.match(regex);
+      if (matches) {
+        const variables = matches.map((match) => match.replace(/{{|}}/g, ""));
+        if (matches.length === 1) {
+          setPromptVariableKey(variables[0]);
+          setPromptVariableSection(
+            <Box
+              style={{
+                backgroundColor: "white",
+                border: "2px solid white",
+                borderRadius: "5px",
+              }}
+              onClick={(e) => {
+                e.stopPropagation();
+              }}
+            >
+              <TextField
+                onChange={(e) => {
+                  setPromptVariableValue(e.target.value);
+                }}
+                value={promptVariableValue}
+                variant="outlined"
+                label={variables[0]}
+                autoComplete="off"
+              />
+            </Box>
+          );
+        } else if (matches.length > 1) {
+          setPromptVariableSection(
+            <Box>
+              <Typography>Error: too many prompt variables.</Typography>
+            </Box>
+          );
+        }
+      }
+    } else {
+      setPromptVariableSection(null);
+      setPromptVariableKey(null);
+      setPromptVariableValue(undefined);
+    }
+  }, [prompt]);
 
   return (
     <>
@@ -111,7 +184,9 @@ const EditorView = (props: {
               id="input"
               onKeyUp={(e) => {
                 if (e.key === "Enter" && e.ctrlKey) {
-                  handleSubmit(value);
+                  handleSubmit(prompt, {
+                    [promptVariableKey || ""]: promptVariableValue || "",
+                  });
                 }
               }}
               placeholder={placeholder}
@@ -122,7 +197,7 @@ const EditorView = (props: {
                 color: "white",
               }}
               multiline
-              value={value}
+              value={prompt}
               onChange={(e) => {
                 setValue(e.target.value);
                 onPromptChange && onPromptChange(e.target.value);
@@ -133,13 +208,21 @@ const EditorView = (props: {
             style={{
               width: "100%",
               display: "flex",
-              justifyContent: "flex-end",
+              justifyContent: promptVariableSection
+                ? "space-between"
+                : "flex-end",
+              alignItems: "end",
             }}
           >
+            <div>{promptVariableSection}</div>
             <Button
               variant="contained"
-              disabled={value.length === 0}
-              onClick={() => handleSubmit(value)}
+              disabled={runDisabled || prompt.length === 0}
+              onClick={() =>
+                handleSubmit(prompt, {
+                  [promptVariableKey || ""]: promptVariableValue || "",
+                })
+              }
             >
               Run
             </Button>

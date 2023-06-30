@@ -1,7 +1,5 @@
 "use client";
 
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -44,7 +42,7 @@ const TestCaseRow = (props: { testCase: TestCase }) => {
   return (
     <>
       <TableRow
-        key={testCase.case}
+        key={testCase.action}
         sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
       >
         <TableCell
@@ -55,7 +53,7 @@ const TestCaseRow = (props: { testCase: TestCase }) => {
             overflow: "hidden",
           }}
         >
-          {testCase.case}
+          {testCase.action}
         </TableCell>
         <TableCell align="center">
           <TestCaseAnswer {...{ answer: testCase.correctAnswer }} />
@@ -67,18 +65,18 @@ const TestCaseRow = (props: { testCase: TestCase }) => {
 };
 
 const TestCasesView = (props: {
-  testCases: TestCase[];
-  showRunButton?: boolean;
+  testCases?: TestCase[];
+  hideRunButton?: boolean;
   open?: boolean;
-  runCases: () => Promise<void>;
+  runCases?: () => Promise<void>;
   runButtonDisabled?: boolean;
 }) => {
   const {
-    testCases,
-    showRunButton = true,
+    testCases = defaultTestCases,
     open = false,
     runCases,
     runButtonDisabled = false,
+    hideRunButton = false,
   } = props;
 
   const [expanded, setExpanded] = useState<boolean>(open);
@@ -108,14 +106,14 @@ const TestCasesView = (props: {
                 </Grid>
               </Grid>
             </Grid>
-            {showRunButton && (
+            {!hideRunButton && (
               <Grid item>
                 <Button
                   variant="contained"
                   disabled={runButtonDisabled}
                   onClick={() => {
                     setExpanded(true);
-                    runCases();
+                    runCases && runCases();
                   }}
                 >
                   Run Cases

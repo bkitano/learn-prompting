@@ -1,9 +1,10 @@
 "use client";
 
 import { Grid } from "@mui/material";
-import { TestCases } from "../../Components/TestCases";
+import { TestCasesView as TestCases } from "../../Components/TestCases";
 import { Editor } from "@/Components/Editor";
 import { MeetThePromptEditor } from "./MeetThePromptEditor";
+import { testCases } from "@/resources/testCases";
 
 export default function Page() {
   return (
@@ -25,7 +26,7 @@ export default function Page() {
         >
           <TestCases
             {...{
-              showRunButton: false,
+              hideRunButton: true,
             }}
           />
         </div>

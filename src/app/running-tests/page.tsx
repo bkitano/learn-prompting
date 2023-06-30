@@ -29,7 +29,6 @@ export default function Page() {
     );
 
     const { completions } = await response.json();
-    console.log(completions);
     const newCases: TestCase[] = cases.map((testCase, index) => {
       return {
         ...testCase,
