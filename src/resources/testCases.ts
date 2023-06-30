@@ -1,8 +1,7 @@
 type TestCase = {
   case: string;
   correctAnswer: boolean;
-  promptAnswer?: boolean;
-  explanation?: string;
+  response?: string;
 };
 
 const testCases: TestCase[] = [

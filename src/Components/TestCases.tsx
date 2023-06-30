@@ -60,52 +60,9 @@ const TestCaseRow = (props: { testCase: TestCase }) => {
         <TableCell align="center">
           <TestCaseAnswer {...{ answer: testCase.correctAnswer }} />
         </TableCell>
-        <TableCell align="center">{testCase.promptAnswer}</TableCell>
+        <TableCell align="center">{testCase.response}</TableCell>
       </TableRow>
     </>
-  );
-};
-
-const TestCases = (props: {
-  showRunButton?: boolean;
-  open?: boolean;
-  runButtonDisabled?: boolean;
-}) => {
-  const { showRunButton, open, runButtonDisabled } = props;
-  const [testCases, setTestCases] = useState<TestCase[]>(defaultTestCases);
-
-  const [testCaseResults, setTestCaseResults] = useState<TestCase[] | null>(
-    null
-  );
-
-  const runCases = async (cases: TestCase[]) => {
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/v1/batch`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          prompt: prompt,
-          inputs: cases,
-        }),
-      }
-    );
-
-    console.log(response.json());
-  };
-
-  return (
-    <TestCasesView
-      {...{
-        testCases,
-        showRunButton,
-        open,
-        runCases,
-        runButtonDisabled,
-      }}
-    />
   );
 };
 
@@ -113,7 +70,7 @@ const TestCasesView = (props: {
   testCases: TestCase[];
   showRunButton?: boolean;
   open?: boolean;
-  runCases: (cases: TestCase[]) => Promise<void>;
+  runCases: () => Promise<void>;
   runButtonDisabled?: boolean;
 }) => {
   const {
@@ -157,7 +114,8 @@ const TestCasesView = (props: {
                   variant="contained"
                   disabled={runButtonDisabled}
                   onClick={() => {
-                    runCases(testCases);
+                    setExpanded(true);
+                    runCases();
                   }}
                 >
                   Run Cases
@@ -184,7 +142,7 @@ const TestCasesView = (props: {
                     <Typography variant="h6">Correct Answer</Typography>
                   </TableCell>
                   <TableCell align="center">
-                    <Typography variant="h6">Prompt Answer</Typography>
+                    <Typography variant="h6">Model Response</Typography>
                   </TableCell>
                 </TableRow>
               </TableHead>
@@ -201,4 +159,4 @@ const TestCasesView = (props: {
   );
 };
 
-export { TestCases };
+export { TestCasesView };
