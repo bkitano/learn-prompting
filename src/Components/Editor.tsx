@@ -1,9 +1,20 @@
 import { Box, Button, Grid, InputBase } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ResponseViewer } from "./ResponseViewer";
 
 const Editor = () => {
   const [responseValue, setResponseValue] = useState<string | null>(null);
+  const [submittedValue, setSubmittedValue] = useState<string | null>(null);
+
+  const handleSubmit = (value: string) => {
+    setSubmittedValue(value);
+  };
+
+  useEffect(() => {
+    if (!submittedValue) return;
+    const response = Math.random().toString(36);
+    setResponseValue(response);
+  }, [submittedValue]);
 
   return (
     <>
@@ -12,6 +23,7 @@ const Editor = () => {
           <EditorView
             {...{
               initialValue: "",
+              handleSubmit,
             }}
           />
         </Grid>
@@ -23,13 +35,12 @@ const Editor = () => {
   );
 };
 
-const EditorView = (props: { initialValue: string }) => {
-  const { initialValue } = props;
+const EditorView = (props: {
+  initialValue: string;
+  handleSubmit: (value: string) => void;
+}) => {
+  const { initialValue, handleSubmit } = props;
   const [value, setValue] = useState(initialValue);
-
-  const handleSubmit = () => {
-    console.log(value);
-  };
 
   return (
     <>
@@ -70,7 +81,7 @@ const EditorView = (props: { initialValue: string }) => {
               id="input"
               onKeyUp={(e) => {
                 if (e.key === "Enter" && e.ctrlKey) {
-                  handleSubmit();
+                  handleSubmit(value);
                 }
               }}
               style={{
@@ -91,7 +102,11 @@ const EditorView = (props: { initialValue: string }) => {
               justifyContent: "flex-end",
             }}
           >
-            <Button variant="contained" onClick={handleSubmit}>
+            <Button
+              variant="contained"
+              disabled={value.length === 0}
+              onClick={() => handleSubmit(value)}
+            >
               Run
             </Button>
           </div>
