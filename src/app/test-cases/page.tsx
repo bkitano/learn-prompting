@@ -12,7 +12,7 @@ export default function Page() {
         <TestCasesDescription />
       </Grid>
       <Grid item xs={12} sm={6}>
-        <TestCases />
+        <TestCases {...{ showRunButton: false, open: true }} />
       </Grid>
     </Grid>
   );

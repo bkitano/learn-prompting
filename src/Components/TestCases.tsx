@@ -1,3 +1,5 @@
+"use client";
+
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import * as React from "react";
@@ -15,10 +17,13 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Checkbox,
   Collapse,
+  Grid,
   IconButton,
   Typography,
 } from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
 
 type TestCase = {
   description: string;
@@ -27,12 +32,15 @@ type TestCase = {
   explanation?: string;
 };
 
-const TestCases = () => {
+const TestCases = (props: { showRunButton?: boolean; open?: boolean }) => {
+  const { showRunButton, open } = props;
   const [testCases, setTestCases] = useState<TestCase[]>(defaultTestCases);
   return (
     <TestCasesView
       {...{
         testCases,
+        showRunButton,
+        open,
       }}
     />
   );
@@ -88,49 +96,78 @@ const TestCaseRow = (props: { testCase: TestCase }) => {
   );
 };
 
-const TestCasesView = (props: { testCases: TestCase[] }) => {
-  const { testCases } = props;
+const TestCasesView = (props: {
+  testCases: TestCase[];
+  showRunButton?: boolean;
+  open?: boolean;
+}) => {
+  const { testCases, showRunButton = true, open = false } = props;
+
+  const [expanded, setExpanded] = useState<boolean>(open);
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
 
   return (
     <Card>
       <CardHeader
-        title={"Test cases"}
-        action={
-          <Button
-            variant="contained"
-            onClick={() => {
-              console.log("run");
-            }}
+        title={
+          <Grid
+            container
+            justifyContent={"space-between"}
+            alignItems={"center"}
           >
-            Run Cases
-          </Button>
+            <Grid item xs={1}>
+              <IconButton onClick={handleExpandClick}>
+                <ExpandMore />
+              </IconButton>
+            </Grid>
+            <Grid item xs={10}>
+              <Typography variant="h5">Test cases</Typography>
+            </Grid>
+            <Grid item xs={1}></Grid>
+          </Grid>
+        }
+        action={
+          showRunButton && (
+            <Button
+              variant="contained"
+              onClick={() => {
+                console.log("run");
+              }}
+            >
+              Run Cases
+            </Button>
+          )
         }
       />
-      <CardContent>
-        <TableContainer>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell />
-                <TableCell>
-                  <Typography variant="h6">Description</Typography>
-                </TableCell>
-                <TableCell align="center">
-                  <Typography variant="h6">Correct Answer</Typography>
-                </TableCell>
-                <TableCell align="center">
-                  <Typography variant="h6">Prompt Answer</Typography>
-                </TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {testCases.map((testCase, index) => (
-                <TestCaseRow key={index} {...{ testCase }} />
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </CardContent>
+      <Collapse in={expanded}>
+        <CardContent>
+          <TableContainer>
+            <Table sx={{ minWidth: 650 }} aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell />
+                  <TableCell>
+                    <Typography variant="h6">Description</Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Typography variant="h6">Correct Answer</Typography>
+                  </TableCell>
+                  <TableCell align="center">
+                    <Typography variant="h6">Prompt Answer</Typography>
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {testCases.map((testCase, index) => (
+                  <TestCaseRow key={index} {...{ testCase }} />
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </CardContent>
+      </Collapse>
     </Card>
   );
 };
