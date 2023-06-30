@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 const PAGES = [
   "/start",
   "/the-problem",
+  "/test-cases",
   "/meet-prompt-editor",
   "/running-tests",
   "/asking-specifics",

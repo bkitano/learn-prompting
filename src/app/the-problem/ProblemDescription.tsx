@@ -4,26 +4,38 @@ const ProblemDescription = () => {
   return (
     <>
       <Typography variant="h4" gutterBottom>
-        Understanding the Problem
+        The Challenge
       </Typography>
       <Typography variant="h5">
-        As we delve deeper into LLMs and prompting, let's begin by identifying
-        the problem we're tackling.
+        As we delve deeper into LLMs and prompting, let's begin by setting up
+        the challenge we're tackling.
       </Typography>
       <br />
       <Typography variant="body1">
-        The problem is to classify whether a given action is{" "}
-        <span style={{ fontWeight: "bold" }}>compliant</span> or
-        <span style={{ fontWeight: "bold" }}>non-compliant</span>. The basis of
-        this classification can be various rules or norms that we define.
+        Put on your lawyer hats, because today we are going to become Chief of
+        Compliance at agents.blue!
       </Typography>
       <br />
-      <Typography>
-        You can view different test cases and their classifications in the{" "}
-        <span style={{ fontWeight: "bold" }}>Test case viewer</span>. For now,
-        observe and get familiar with the interface and test case
-        classifications. Don't worry, you'll get to interact more with it in the
-        coming lessons!
+      <Typography variant="body1">
+        Our employees are constantly performing actions that may or may not be
+        compliant with our company's policies. We need to classify these actions
+        as <span style={{ fontWeight: "bold" }}>compliant</span> or{" "}
+        <span style={{ fontWeight: "bold" }}>non-compliant</span> to make sure
+        that all our employees are following the company's rules and
+        regulations.
+      </Typography>
+      <br />
+      <Typography variant="body1">
+        As lawyers, we're experts in the field of compliance. But we have better
+        things to do than manually classify actions all day! So, we're going to
+        use LLMs to help us out.
+      </Typography>
+      <br />
+      <Typography variant="body1">
+        <span style={{ fontWeight: "bold" }}>
+          Our challenge is to build a prompt that can correctly classify actions
+          as compliant or non-compliant.
+        </span>
       </Typography>
       <br />
       <Typography>

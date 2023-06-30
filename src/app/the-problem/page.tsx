@@ -10,9 +10,6 @@ export default function TheProblem() {
       <Grid item xs={12} sm={6}>
         <ProblemDescription />
       </Grid>
-      <Grid item xs={12} sm={6}>
-        <TestCases />
-      </Grid>
     </Grid>
   );
 }
