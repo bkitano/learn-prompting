@@ -16,24 +16,31 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Grid
-          container
-          direction={"column"}
-          justifyContent={"space-between"}
-          style={{
-            height: "100vh",
-            width: "100vw",
-          }}
-        >
-          <Grid item>
+        <div>
+          <div
+            style={
+              {
+                // these styles are so the header stays at the top
+                // of the viewport, no matter what
+                width: "100%",
+              }
+            }
+          >
             <TopNav />
-
-            {children}
-          </Grid>
-          <Grid item>
+          </div>
+          {children}
+          <div
+            style={{
+              // these styles are so the footer stays at the bottom
+              // of the viewport, no matter what
+              position: "fixed",
+              bottom: 0,
+              width: "100%",
+            }}
+          >
             <BottomNav />
-          </Grid>
-        </Grid>
+          </div>
+        </div>
       </body>
     </html>
   );

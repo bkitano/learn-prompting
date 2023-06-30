@@ -2,34 +2,26 @@ import { AppBar, Button, Grid, Toolbar } from "@mui/material";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+const PAGES = [
+  "/start",
+  "/the-problem",
+  "/meet-prompt-editor",
+  "/running-tests",
+  "/asking-specifics",
+  "/output-formatting",
+  "/few-shot",
+  "/step-by-step",
+];
 const pageRouter = (link: string): (string | null)[] => {
-  const pages = [
-    "/start",
-    "/the-problem",
-    "/meet-prompt-editor",
-    "/running-tests",
-    "/asking-specifics",
-    "/output-formatting",
-    "/few-shot",
-    "/step-by-step",
-  ];
-
-  const index = pages.indexOf(link);
+  const index = PAGES.indexOf(link);
   return [
-    index > 0 ? pages[index - 1] : null,
-    index < pages.length - 1 ? pages[index + 1] : null,
+    index > 0 ? PAGES[index - 1] : null,
+    index < PAGES.length - 1 ? PAGES[index + 1] : null,
   ];
 };
 
 const pageNumber = (link: string): number => {
-  switch (link) {
-    case "/start":
-      return 1;
-    case "/the-problem":
-      return 2;
-    default:
-      return 0;
-  }
+  return PAGES.indexOf(link) + 1;
 };
 
 const BottomNav = () => {

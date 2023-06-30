@@ -10,7 +10,15 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { useEffect, useState } from "react";
 import { testCases as defaultTestCases } from "@/resources/testCases";
-import { Collapse, IconButton, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Collapse,
+  IconButton,
+  Typography,
+} from "@mui/material";
 
 type TestCase = {
   description: string;
@@ -72,7 +80,9 @@ const TestCaseRow = (props: { testCase: TestCase }) => {
         <TableCell align="center">{testCase.promptAnswer}</TableCell>
       </TableRow>
       <TableRow>
-        <Collapse>{testCase.explanation}</Collapse>
+        <TableCell>
+          <Collapse>{testCase.explanation}</Collapse>
+        </TableCell>
       </TableRow>
     </>
   );
@@ -82,29 +92,46 @@ const TestCasesView = (props: { testCases: TestCase[] }) => {
   const { testCases } = props;
 
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell />
-            <TableCell>
-              <Typography variant="h6">Description</Typography>
-            </TableCell>
-            <TableCell align="center">
-              <Typography variant="h6">Correct Answer</Typography>
-            </TableCell>
-            <TableCell align="center">
-              <Typography variant="h6">Prompt Answer</Typography>
-            </TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {testCases.map((testCase) => (
-            <TestCaseRow {...{ testCase }} />
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Card>
+      <CardHeader
+        title={"Test cases"}
+        action={
+          <Button
+            variant="contained"
+            onClick={() => {
+              console.log("run");
+            }}
+          >
+            Run Cases
+          </Button>
+        }
+      />
+      <CardContent>
+        <TableContainer>
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell />
+                <TableCell>
+                  <Typography variant="h6">Description</Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="h6">Correct Answer</Typography>
+                </TableCell>
+                <TableCell align="center">
+                  <Typography variant="h6">Prompt Answer</Typography>
+                </TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {testCases.map((testCase, index) => (
+                <TestCaseRow key={index} {...{ testCase }} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </CardContent>
+    </Card>
   );
 };
 
