@@ -1,11 +1,12 @@
 import { Box, Button, Grid, InputBase } from "@mui/material";
 import { useState } from "react";
+import { ResponseViewer } from "./ResponseViewer";
 
 const Editor = (props: { initialValue: string }) => {
   const { initialValue } = props;
   const [value, setValue] = useState(initialValue);
 
-  const onSubmit = () => {
+  const handleSubmit = () => {
     console.log(value);
   };
 
@@ -50,7 +51,7 @@ const Editor = (props: { initialValue: string }) => {
                   id="input"
                   onKeyUp={(e) => {
                     if (e.key === "Enter" && e.ctrlKey) {
-                      onSubmit();
+                      handleSubmit();
                     }
                   }}
                   style={{
@@ -71,7 +72,7 @@ const Editor = (props: { initialValue: string }) => {
                   justifyContent: "flex-end",
                 }}
               >
-                <Button variant="contained" style={{}}>
+                <Button variant="contained" onClick={handleSubmit}>
                   Run
                 </Button>
               </div>
@@ -79,16 +80,7 @@ const Editor = (props: { initialValue: string }) => {
           </div>
         </Grid>
         <Grid item xs={12}>
-          <Box
-            style={{
-              backgroundColor: "blue",
-              border: "2px solid white",
-              borderRadius: "5px",
-              padding: "10px",
-            }}
-          >
-            asdf
-          </Box>
+          <ResponseViewer />
         </Grid>
       </Grid>
     </>
