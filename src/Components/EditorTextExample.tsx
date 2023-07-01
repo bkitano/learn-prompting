@@ -7,6 +7,7 @@ const EditorTextExample = ({ children }: { children: string }) => (
       backgroundColor: "#282c34",
       border: "2px solid white",
       borderRadius: "5px",
+      whiteSpace: "pre-wrap",
     }}
   >
     <Typography

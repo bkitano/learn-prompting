@@ -1,3 +1,4 @@
+import { EditorTextExample } from "@/Components/EditorTextExample";
 import { Typography } from "@mui/material";
 
 export const OutputFormatting = () => (
@@ -17,11 +18,45 @@ export const OutputFormatting = () => (
     </Typography>
     <br />
     <Typography>
-      Structured output helps in better post-processing of the LLM's responses
-      and integrating them into larger workflows. Stay tuned to learn more about
-      it!
+      The way in we ask for XML output is by adding instructions that clarify
+      the format we want. For our poetry example, we can ask for XML output like
+      this:
     </Typography>
     <br />
+    <EditorTextExample>{`INSTRUCTIONS:
+Write me a poem about {{topic}}.
+    
+FORMAT: 
+\`\`\`xml
+<poem>
+    <line>LINE</line>
+    <line>LINE</line>
+    <line>LINE</line>
+</poem>
+\`\`\``}</EditorTextExample>
+    <br />
+    <Typography>
+      Structured output helps in better post-processing of the LLM's responses
+      and integrating them into larger workflows. Stay tuned to learn more about
+      it in future courses on prompt chaining.
+    </Typography>
+    <br />
+    <Typography>
+      Let's try it out! Add instructions to your prompt that ask for XML output,
+      where the XML fields are
+    </Typography>
+    <br />
+    <EditorTextExample>
+      {`<response>
+    <compliance_status>TRUE|FALSE</compliance_status>
+    <reason>REASON</reason>
+</response>
+`}
+    </EditorTextExample>
+    <br />
+    <Typography>then click "Run".</Typography>
+    <br />
+
     <Typography>
       Excited for the next lesson? Click "Next" to continue.
     </Typography>
