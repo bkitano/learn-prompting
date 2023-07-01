@@ -3,7 +3,7 @@
 import { Grid } from "@mui/material";
 import { TestCasesView } from "../../Components/TestCases";
 import { Editor } from "@/Components/Editor";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TestCase } from "@/resources/testCases";
 import { testCases as defaultTestCases } from "@/resources/testCases";
 import useSessionStorage from "@/hooks/useSessionStorage";
@@ -19,9 +19,12 @@ export default function Page() {
     setPrompt(storedPrompt);
   }, [storedPrompt]);
 
+  const promptRef = useRef<string | null>();
+  promptRef.current = prompt;
+
   useEffect(
     () => () => {
-      storePrompt(prompt);
+      storePrompt(promptRef.current);
     },
     []
   );

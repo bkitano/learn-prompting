@@ -4,12 +4,30 @@ import { Grid } from "@mui/material";
 import { TestCasesView } from "../../Components/TestCases";
 import { Editor } from "@/Components/Editor";
 import { PromptVariables } from "./PromptVariables";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TestCase } from "@/resources/testCases";
 import { testCases as defaultTestCases } from "@/resources/testCases";
+import useSessionStorage from "@/hooks/useSessionStorage";
 
 export default function Page() {
-  const [prompt, setPrompt] = useState<string | null>(null);
+  const { storedValue: storedPrompt, storeSessionValue: storePrompt } =
+    useSessionStorage("prompt");
+
+  const [prompt, setPrompt] = useState<string | null>(storedPrompt);
+
+  useEffect(() => {
+    setPrompt(storedPrompt);
+  }, [storedPrompt]);
+
+  const promptRef = useRef<string | null>();
+  promptRef.current = prompt;
+
+  useEffect(
+    () => () => {
+      storePrompt(promptRef.current);
+    },
+    []
+  );
 
   const [testCases, setTestCases] = useState<TestCase[]>(defaultTestCases);
 

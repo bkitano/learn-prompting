@@ -11,6 +11,9 @@ const useSessionStorage = (name: string) => {
     if (value) {
       sessionStorage.setItem(name, value);
       setSessionValue(value);
+    } else {
+      sessionStorage.setItem(name, "");
+      setSessionValue("");
     }
   };
 
