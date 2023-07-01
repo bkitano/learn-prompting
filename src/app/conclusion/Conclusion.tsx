@@ -1,4 +1,5 @@
 import { Button, TextField, Typography } from "@mui/material";
+import { TwitterIcon, TwitterShareButton } from "react-share";
 
 const Conclusion = () => {
   return (
@@ -17,7 +18,15 @@ const Conclusion = () => {
           width: "100%",
         }}
       >
-        <Button variant="contained">Share</Button>
+        <TwitterShareButton
+          {...{
+            title:
+              "I just finished agents.blue's free course on LLM prompting!",
+            url: "https://agents.blue",
+          }}
+        >
+          <TwitterIcon size={32} round={true} />
+        </TwitterShareButton>
       </div>
       <br />
       <Typography variant="h5">
