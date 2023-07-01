@@ -13,6 +13,7 @@ const PAGES = [
   "/output-formatting",
   "/few-shot",
   "/step-by-step",
+  "/conclusion",
 ];
 const pageRouter = (link: string): (string | null)[] => {
   const index = PAGES.indexOf(link);
