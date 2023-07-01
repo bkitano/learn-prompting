@@ -1,4 +1,7 @@
-import { EditorTextExample } from "@/Components/EditorTextExample";
+import {
+  EditorExample,
+  EditorTextExample,
+} from "@/Components/EditorTextExample";
 import { Typography } from "@mui/material";
 
 export const FewShotPrompting = () => (
@@ -23,13 +26,14 @@ export const FewShotPrompting = () => (
       prompt.
     </Typography>
     <br />
-    <EditorTextExample>
+    <EditorExample>
       {`INSTRUCTIONS:
 Write me a haiku about {{topic}}.
 
 FORMAT:
 \`\`\`xml
 <poem>
+    <topic>TOPIC</topic>
     <line>LINE</line>
     <line>LINE</line>
     <line>LINE</line>
@@ -38,12 +42,15 @@ FORMAT:
 
 EXAMPLES:
 <poem>
+<topic>love</topic>
 <line>Whispering winds entwine,</line>
 <line>Beneath the pale moonshine,</line>
 <line>Love's tender design.</line>
 </poem>
+
+ANSWER:
 `}
-    </EditorTextExample>
+    </EditorExample>
     <br />
     <Typography>
       Practice creating a few-shot prompt. Remember, the goal is to make the LLM
