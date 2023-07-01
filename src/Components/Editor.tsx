@@ -33,8 +33,15 @@ const Editor = (props: {
   placeholder?: string;
   runDisabled?: boolean;
   onPromptChange?: (prompt: string) => void;
+  exampleView?: boolean;
 }) => {
-  const { initialValue, placeholder, onPromptChange, runDisabled } = props;
+  const {
+    initialValue,
+    placeholder,
+    onPromptChange,
+    runDisabled,
+    exampleView,
+  } = props;
   const [responseValue, setResponseValue] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -68,6 +75,7 @@ const Editor = (props: {
               placeholder,
               onPromptChange,
               runDisabled,
+              exampleView,
             }}
           />
         </Grid>
@@ -85,6 +93,7 @@ const EditorView = (props: {
   handleSubmit: (value: string, inputs?: Record<string, string>) => void;
   onPromptChange?: (prompt: string) => void;
   runDisabled?: boolean;
+  exampleView?: boolean;
 }) => {
   const {
     initialValue,
@@ -92,6 +101,7 @@ const EditorView = (props: {
     placeholder,
     onPromptChange,
     runDisabled = false,
+    exampleView = false,
   } = props;
   const [prompt, setValue] = useState(initialValue);
 
@@ -171,7 +181,7 @@ const EditorView = (props: {
           borderRadius: "5px",
           width: "100%",
           height: "100%",
-          minHeight: "calc(50vh)",
+          minHeight: !exampleView ? "calc(50vh)" : undefined,
           whiteSpace: "pre-wrap",
         }}
       >

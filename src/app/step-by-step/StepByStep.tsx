@@ -1,13 +1,14 @@
+import { EditorExample } from "@/Components/EditorTextExample";
 import { Typography } from "@mui/material";
 
 export const StepByStep = () => (
   <>
     <Typography variant="h4" gutterBottom>
-      Step-by-step - Guiding the LLM
+      Step-by-Step
     </Typography>
     <Typography variant="h5">
-      As we near the end of our journey, let's learn to make our LLM think
-      step-by-step.
+      Suprisingly, if we simply instruct our agent to think it through before
+      they answer, we can improve performance by a wide margin.
     </Typography>
     <br />
     <Typography variant="body1">
@@ -15,6 +16,20 @@ export const StepByStep = () => (
       <span style={{ fontWeight: "bold" }}>step-by-step</span> can help. It's
       like slowly unfolding the layers of an onion.
     </Typography>
+    <br />
+    <Typography>
+      Look at the difference here between asking the LLM to think step-by-step
+      versus not: 
+    </Typography>
+    <EditorExample>
+      I bought four apples. I gave one to John, two to Mary, and received one from
+      Gabe. How many apples do I have now?
+    </EditorExample>
+    <br />
+    <EditorExample>
+      I bought four apples. I gave one to John, two to Mary, and received one from
+      Gabe. How many apples do I have now? Let's think step-by-step.
+    </EditorExample>
     <br />
     <Typography>
       Practice this method by creating prompts that guide the LLM through the

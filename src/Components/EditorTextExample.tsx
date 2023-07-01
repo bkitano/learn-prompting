@@ -45,6 +45,7 @@ const EditorExample = ({ children }: { children: string }) => {
     <Editor
       {...{
         initialValue: children.trim(),
+        exampleView: true,
       }}
     />
   );
