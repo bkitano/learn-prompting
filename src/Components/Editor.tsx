@@ -33,7 +33,6 @@ const Editor = (props: {
   runDisabled?: boolean;
   onPromptChange?: (prompt: string) => void;
 }) => {
-  console.log("Editor props", props);
   const { initialValue, placeholder, onPromptChange, runDisabled } = props;
   const [responseValue, setResponseValue] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -94,8 +93,6 @@ const EditorView = (props: {
     runDisabled = false,
   } = props;
   const [prompt, setValue] = useState(initialValue);
-  console.log("EditorView initialValue", initialValue);
-  console.log("EditorView prompt", prompt);
 
   useEffect(() => {
     setValue(initialValue);

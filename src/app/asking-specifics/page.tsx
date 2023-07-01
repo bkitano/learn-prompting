@@ -56,8 +56,6 @@ export default function Page() {
     setTestCases(newCases);
   };
 
-  console.log("prompt", prompt);
-
   return (
     <Grid container padding={5} spacing={2}>
       <Grid item xs={12} sm={6}>
