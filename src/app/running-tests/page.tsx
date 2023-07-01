@@ -4,12 +4,26 @@ import { Grid } from "@mui/material";
 import { TestCasesView } from "../../Components/TestCases";
 import { Editor } from "@/Components/Editor";
 import { RunningTestCases } from "./RunningTestCases";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TestCase } from "@/resources/testCases";
 import { testCases as defaultTestCases } from "@/resources/testCases";
+import useSessionStorage from "@/hooks/useSessionStorage";
 
 export default function Page() {
-  const [prompt, setPrompt] = useState<string | null>(null);
+  const { storedValue: storedPrompt, storeSessionValue: storePrompt } =
+    useSessionStorage("prompt");
+
+  const [prompt, setPrompt] = useState<string | null>(storedPrompt);
+
+  const promptRef = useRef<string | null>();
+  promptRef.current = prompt;
+
+  useEffect(
+    () => () => {
+      storePrompt(promptRef.current);
+    },
+    []
+  );
 
   const [testCases, setTestCases] = useState<TestCase[]>(defaultTestCases);
   const [loading, setLoading] = useState<boolean>(false);
@@ -49,7 +63,7 @@ export default function Page() {
       <Grid item xs={12} sm={6}>
         <Editor
           {...{
-            initialValue: "",
+            initialValue: prompt || "",
             placeholder: `Write a prompt that uses a variable called "action" in double brackets here.`,
             onPromptChange: (value: string) => {
               setPrompt(value);

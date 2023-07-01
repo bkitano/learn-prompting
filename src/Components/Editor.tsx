@@ -33,20 +33,21 @@ const Editor = (props: {
   runDisabled?: boolean;
   onPromptChange?: (prompt: string) => void;
 }) => {
+  console.log("Editor props", props);
   const { initialValue, placeholder, onPromptChange, runDisabled } = props;
   const [responseValue, setResponseValue] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const handleSubmit = async (
-    value: string,
+    prompt: string,
     inputs?: Record<string, string>
   ) => {
-    if (!value) return;
+    if (!prompt) return;
 
     setLoading(true);
 
     const response = await getPromptCompletion({
-      prompt: value,
+      prompt,
       inputs: inputs || {},
     }).then((response) => {
       return response.json();
@@ -93,6 +94,13 @@ const EditorView = (props: {
     runDisabled = false,
   } = props;
   const [prompt, setValue] = useState(initialValue);
+  console.log("EditorView initialValue", initialValue);
+  console.log("EditorView prompt", prompt);
+
+  useEffect(() => {
+    setValue(initialValue);
+  }, [initialValue]);
+
   const [promptVariableSection, setPromptVariableSection] = useState<any>(null);
   const [promptVariableKey, setPromptVariableKey] = useState<string | null>(
     null
