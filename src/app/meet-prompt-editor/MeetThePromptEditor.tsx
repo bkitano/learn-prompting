@@ -12,8 +12,8 @@ const MeetThePromptEditor = () => {
       <br />
       <Typography variant="body1">
         With <span style={{ fontWeight: "bold" }}>Prompt Engineering</span>, we
-        can design prompts that guide the LLM to help us classify actions as
-        compliant or non-compliant. The{" "}
+        can design prompts to talk to the LLM, which instruct it on how to
+        classify actions as compliant or non-compliant. The{" "}
         <span style={{ fontWeight: "bold" }}>Prompt Editor</span> is where you
         will craft these prompts. It's just like explaining to a person how to
         do a task, only you're instructing an LLM.

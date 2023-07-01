@@ -29,8 +29,10 @@ const pageNumber = (link: string): number => {
 
 const BottomNav = () => {
   const pathname = usePathname();
+  
   const [prevHref, nextHref] = pageRouter(pathname);
   const page = pageNumber(pathname);
+
 
   return (
     <AppBar position="static">
