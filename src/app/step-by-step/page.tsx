@@ -68,7 +68,7 @@ export default function Page() {
         <Editor
           {...{
             initialValue: prompt || "",
-            placeholder: `Ask for a specific YES or NO answer in your prompt.`,
+            placeholder: `Show an example of how to work out the solution to the problem.`,
             onPromptChange: (value: string) => {
               setPrompt(value);
             },
