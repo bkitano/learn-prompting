@@ -59,7 +59,7 @@ const Page = () => {
         <Grid item xs={8}>
           <Typography>
             I promise you, this is the easiest, fastest, and most fun way to
-            learn prompting. No repo cloning, no drag-and-drop, you don't even
+            learn prompting. No repo cloning, no drag-and-drop, you {`don't`} even
             need to know how to code.
           </Typography>
         </Grid>
