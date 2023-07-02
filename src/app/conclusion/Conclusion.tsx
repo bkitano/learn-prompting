@@ -4,8 +4,8 @@ import { TwitterIcon, TwitterShareButton } from "react-share";
 const TwitterButton = () => (
   <TwitterShareButton
     {...{
-      title: "I just finished agents.blue's free course on LLM prompting!",
-      url: "http://agents.blue",
+      title: "shoutout @briankitano's free course on LLM prompting.",
+      url: "agents.blue",
     }}
   >
     <div
