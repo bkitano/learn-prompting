@@ -1,4 +1,4 @@
-import { EditorTextExample } from "@/Components/EditorTextExample";
+import { EditorExample } from "@/Components/EditorExample";
 import { Typography } from "@mui/material";
 
 export const AskingForSpecifics = () => (
@@ -13,11 +13,9 @@ export const AskingForSpecifics = () => (
     <br />
     <Typography variant="body1">You could design your prompt to be</Typography>
     <br />
-    <EditorTextExample>
-      {`Please create a four-line poem with
-      the following format: 'Roses are red, violets are blue, _______, ________'. 
-      The last two lines should rhyme with 'blue'.`}
-    </EditorTextExample>
+    <EditorExample>
+      {`Please create a four-line poem with the following format: 'Roses are red, violets are blue, _______, ________'. The last two lines should rhyme with 'blue'.`}
+    </EditorExample>
     <br />
     <Typography>
       When you run this, the LLM will be guided to respond in the format you

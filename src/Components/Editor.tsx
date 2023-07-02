@@ -13,7 +13,6 @@ const getPromptCompletion = async (request: {
   prompt: string;
   inputs: Record<string, string>;
 }): Promise<any> => {
-  console.log({ request });
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/v1/submit`,
     {
@@ -226,6 +225,7 @@ const EditorView = (props: {
               }}
             />
           </div>
+          <br />
           <div
             style={{
               width: "100%",

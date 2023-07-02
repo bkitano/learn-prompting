@@ -1,6 +1,5 @@
 import { ContentCopy } from "@mui/icons-material";
 import { IconButton, Typography } from "@mui/material";
-import { Editor } from "./Editor";
 
 const EditorTextExample = ({ children }: { children: string }) => {
   return (
@@ -40,15 +39,4 @@ const EditorTextExample = ({ children }: { children: string }) => {
   );
 };
 
-const EditorExample = ({ children }: { children: string }) => {
-  return (
-    <Editor
-      {...{
-        initialValue: children.trim(),
-        exampleView: true,
-      }}
-    />
-  );
-};
-
-export { EditorTextExample, EditorExample };
+export { EditorTextExample };

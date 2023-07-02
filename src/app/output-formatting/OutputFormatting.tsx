@@ -1,4 +1,4 @@
-import { EditorTextExample } from "@/Components/EditorTextExample";
+import { EditorExample } from "@/Components/EditorExample";
 import { Typography } from "@mui/material";
 
 export const OutputFormatting = () => (
@@ -23,7 +23,7 @@ export const OutputFormatting = () => (
       this:
     </Typography>
     <br />
-    <EditorTextExample>{`INSTRUCTIONS:
+    <EditorExample>{`INSTRUCTIONS:
 Write me a poem about {{topic}}.
     
 FORMAT: 
@@ -33,7 +33,7 @@ FORMAT:
     <line>LINE</line>
     <line>LINE</line>
 </poem>
-\`\`\``}</EditorTextExample>
+\`\`\``}</EditorExample>
     <br />
     <Typography>
       Structured output helps in better post-processing of the LLM's responses
@@ -46,13 +46,13 @@ FORMAT:
       where the XML fields are
     </Typography>
     <br />
-    <EditorTextExample>
+    <EditorExample>
       {`<response>
     <compliance_status>TRUE|FALSE</compliance_status>
     <reason>REASON</reason>
 </response>
 `}
-    </EditorTextExample>
+    </EditorExample>
     <br />
     <Typography>then click "Run".</Typography>
     <br />

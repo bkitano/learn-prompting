@@ -1,3 +1,4 @@
+import { EditorExample } from "@/Components/EditorExample";
 import {
   Card,
   Table,
@@ -25,22 +26,7 @@ const PromptVariables = () => (
       like this:
     </Typography>
     <br />
-    <div
-      style={{
-        padding: "15px",
-        backgroundColor: "#282c34",
-        border: "2px solid white",
-        borderRadius: "5px",
-      }}
-    >
-      <Typography
-        style={{
-          fontFamily: "monospace",
-        }}
-      >
-        Write me a poem about {`{{topic}}`}.
-      </Typography>
-    </div>
+    <EditorExample>{`Write me a poem about {{topic}}.`}</EditorExample>
     <br />
     <Typography>then when you run the prompt with the test case</Typography>
     <br />

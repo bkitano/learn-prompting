@@ -1,7 +1,4 @@
-import {
-  EditorExample,
-  EditorTextExample,
-} from "@/Components/EditorTextExample";
+import { EditorExample } from "@/Components/EditorExample";
 import { Typography } from "@mui/material";
 
 export const FewShotPrompting = () => (
