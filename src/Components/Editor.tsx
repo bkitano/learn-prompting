@@ -6,7 +6,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ResponseViewer } from "./ResponseViewer";
 
 const getPromptCompletion = async (request: {
@@ -105,6 +105,9 @@ const EditorView = (props: {
   } = props;
   const [prompt, setValue] = useState(initialValue);
 
+  const idRef = useRef(Math.random().toString(36).substring(7));
+  const id = idRef.current;
+
   useEffect(() => {
     setValue(initialValue);
   }, [initialValue]);
@@ -169,7 +172,7 @@ const EditorView = (props: {
       <div
         id="input-container"
         onClick={() => {
-          const input = document.getElementById("input");
+          const input = document.getElementById(id);
           if (input) {
             input.focus();
           }
@@ -200,7 +203,7 @@ const EditorView = (props: {
             }}
           >
             <InputBase
-              id="input"
+              id={id}
               onKeyUp={(e) => {
                 if (e.key === "Enter" && e.ctrlKey) {
                   handleSubmit(prompt, {
