@@ -53,7 +53,7 @@ const BottomNav = () => {
               </Link>
             )}
           </Grid>
-          <Grid item>Page {page}</Grid>
+          <Grid item>{page !== 0 && `Page ${page}`}</Grid>
           <Grid item>
             {nextHref && (
               <Link href={nextHref}>
