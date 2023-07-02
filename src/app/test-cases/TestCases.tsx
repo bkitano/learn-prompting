@@ -19,7 +19,7 @@ export const TestCases = () => (
     </Typography>
     <br />
     <Typography>
-      We're going to test on a specific part of the law called the{" "}
+      {`We're`} going to test on a specific part of the law called the{" "}
       <a href="https://www.justice.gov/criminal-fraud/foreign-corrupt-practices-act">
         <span
           style={{
@@ -33,15 +33,15 @@ export const TestCases = () => (
       </a>
       , or <span style={{ fontWeight: "bold" }}>FCPA</span> for short. The FCPA
       is a law that prohibits companies from bribing foreign officials to obtain
-      or retain business. We're going to test our LLM on a few examples of
+      or retain business. {`We're`} going to test our LLM on a few examples of
       actions that may or may not be compliant with the FCPA.
     </Typography>
     <br />
     <Typography>
       Testing with examples is the easiest way to see if a language model is
       doing what we want it to do. We call these examples{" "}
-      <span style={{ fontWeight: "bold" }}>test cases</span>. We've picked a set
-      of {testCases.length} cases that span a variety of situations. We've also
+      <span style={{ fontWeight: "bold" }}>test cases</span>. {`We've`} picked a set
+      of {testCases.length} cases that span a variety of situations. {`We've`} also
       classified each case as{" "}
       <span style={{ fontWeight: "bold" }}>compliant</span> or{" "}
       <span style={{ fontWeight: "bold" }}>non-compliant</span> with the FCPA.
@@ -51,11 +51,11 @@ export const TestCases = () => (
       You can view different test cases and their classifications in the{" "}
       <span style={{ fontWeight: "bold" }}>Test case viewer</span>. For now,
       observe and get familiar with the interface and test case classifications.
-      Don't worry, you'll get to interact more with it in the coming lessons!
+      {`Don't`} worry, {`you'll`} get to interact more with it in the coming lessons!
     </Typography>
     <br />
     <Typography>
-      Ready to take a step further? Click the "Next" button to continue.
+      Ready to take a step further? Click the {`"Next"`} button to continue.
     </Typography>
   </>
 );

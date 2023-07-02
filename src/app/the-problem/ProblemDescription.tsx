@@ -7,7 +7,7 @@ const ProblemDescription = () => {
         The Challenge
       </Typography>
       <Typography variant="h5">
-        Let's begin by setting up the challenge we're tackling.
+        {`Let's`} begin by setting up the challenge {`we're`} tackling.
       </Typography>
       <br />
       <Typography variant="body1">
@@ -17,15 +17,15 @@ const ProblemDescription = () => {
       <br />
       <Typography variant="body1">
         Our employees are constantly performing actions that may or may not be
-        compliant with our company's policies. We need to classify these actions
-        as <span style={{ fontWeight: "bold" }}>compliant</span> or{" "}
+        compliant with our {`company's`} policies. We need to classify these
+        actions as <span style={{ fontWeight: "bold" }}>compliant</span> or{" "}
         <span style={{ fontWeight: "bold" }}>non-compliant</span> to make sure
-        that all our employees are following the company's rules and
+        that all our employees are following the {`company's`} rules and
         regulations.
       </Typography>
       <br />
       <Typography variant="body1">
-        Here's an example of a compliant action:
+        {`Here's`} an example of a compliant action:
       </Typography>
       <br />
       <div
@@ -46,7 +46,7 @@ const ProblemDescription = () => {
       </div>
       <br />
       <Typography variant="body1">
-        And here's an example of a non-compliant action:
+        And {`here's`} an example of a non-compliant action:
       </Typography>
       <br />
       <div
@@ -67,9 +67,9 @@ const ProblemDescription = () => {
       </div>
       <br />
       <Typography variant="body1">
-        As lawyers, we're experts in the field of compliance. But we have better
-        things to do than manually classify actions all day! So, we're going to
-        use LLMs to help us out.
+        As lawyers, {`we're`} experts in the field of compliance. But we have
+        better things to do than manually classify actions all day! So,{" "}
+        {`we're`} going to use LLMs to help us out.
       </Typography>
       <br />
       <Typography variant="body1">
@@ -80,7 +80,7 @@ const ProblemDescription = () => {
       </Typography>
       <br />
       <Typography>
-        Ready to take a step further? Click the "Next" button to continue.
+        Ready to take a step further? Click the {`"Next"`} button to continue.
       </Typography>
     </>
   );

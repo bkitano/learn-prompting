@@ -7,7 +7,7 @@ const Page = () => {
     <Grid container padding={5} spacing={2}>
       <Grid item xs={12} sm={6}>
         <Typography>
-          Thanks for signing up. We'll update you when we launch.
+          {`Thanks for signing up. We'll update you when we launch.`}
         </Typography>
       </Grid>
     </Grid>

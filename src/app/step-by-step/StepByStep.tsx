@@ -13,7 +13,7 @@ export const StepByStep = () => (
     <br />
     <Typography variant="body1">
       When faced with complex tasks, asking the LLM to think{" "}
-      <span style={{ fontWeight: "bold" }}>step-by-step</span> can help. It's
+      <span style={{ fontWeight: "bold" }}>step-by-step</span> can help. {`It's`}
       like slowly unfolding the layers of an onion.
     </Typography>
     <br />
@@ -62,6 +62,6 @@ tomorrow, how many pages should she read?`}
       problem-solving process in a step-wise manner.
     </Typography>
     <br />
-    <Typography>Let's wrap this up! Click "Next" to continue.</Typography>
+    <Typography>{`Let's`} wrap this up! Click {`"Next"`} to continue.</Typography>
   </>
 );

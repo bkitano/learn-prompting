@@ -7,7 +7,7 @@ export const OutputFormatting = () => (
       Output Formatting
     </Typography>
     <Typography variant="h5">
-      Let's learn to make our output more organized and accessible.
+      {`Let's`} learn to make our output more organized and accessible.
     </Typography>
     <br />
     <Typography variant="body1">
@@ -36,14 +36,14 @@ FORMAT:
 \`\`\``}</EditorExample>
     <br />
     <Typography>
-      Structured output helps in better post-processing of the LLM's responses
-      and integrating them into larger workflows. Stay tuned to learn more about
-      it in future courses on prompt chaining.
+      Structured output helps in better post-processing of the {`LLM's`}{" "}
+      responses and integrating them into larger workflows. Stay tuned to learn
+      more about it in future courses on prompt chaining.
     </Typography>
     <br />
     <Typography>
-      Let's try it out! Add instructions to your prompt that ask for XML output,
-      where the XML fields are
+      {`Let's`} try it out! Add instructions to your prompt that ask for XML
+      output, where the XML fields are
     </Typography>
     <br />
     <EditorExample>
@@ -54,11 +54,11 @@ FORMAT:
 `}
     </EditorExample>
     <br />
-    <Typography>then click "Run".</Typography>
+    <Typography>then click {`"Run"`}.</Typography>
     <br />
 
     <Typography>
-      Excited for the next lesson? Click "Next" to continue.
+      Excited for the next lesson? Click {`"Next"`} to continue.
     </Typography>
   </>
 );

@@ -30,13 +30,13 @@ export const AskingForSpecifics = () => (
     </Typography>
     <br />
     <Typography>
-      Add instructions to your prompt that ask for a YES or NO response, then
+      {`Add instructions to your prompt that ask for a YES or NO response, then
       click "Run". This is how you start shaping your LLM's responses to meet
-      your needs.
+      your needs.`}
     </Typography>
     <br />
     <Typography>
-      Ready to unlock more techniques? Click "Next" to continue.
+      {`Ready to unlock more techniques? Click "Next" to continue.`}
     </Typography>
   </>
 );

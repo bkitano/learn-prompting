@@ -14,7 +14,7 @@ export const FewShotPrompting = () => (
       <span style={{ fontWeight: "bold" }}>Few-shot prompting</span> is a
       technique where we provide the LLM with a few examples of the task we want
       it to perform, called <span style={{ fontWeight: "bold" }}>shots</span>.
-      It's like giving it a little nudge in the right direction.
+      {`It's`} like giving it a little nudge in the right direction.
     </Typography>
     <br />
     <Typography>
@@ -54,6 +54,6 @@ ANSWER:
       understand the task better by showing it how to do it.
     </Typography>
     <br />
-    <Typography>Ready for more? Click "Next" to continue.</Typography>
+    <Typography>Ready for more? Click {`"Next"`} to continue.</Typography>
   </>
 );

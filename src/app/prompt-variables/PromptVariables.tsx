@@ -80,7 +80,7 @@ const PromptVariables = () => (
     </Typography>
     <br />
     <Typography>
-      Ready to deepen your understanding? Click "Next" to continue.
+      Ready to deepen your understanding? Click {`"Next"`} to continue.
     </Typography>
   </>
 );

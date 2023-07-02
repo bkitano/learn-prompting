@@ -2,7 +2,6 @@
 
 import { ProblemDescription } from "@/app/the-problem/ProblemDescription";
 import { Grid } from "@mui/material";
-import { TestCases } from "../../Components/TestCases";
 
 export default function TheProblem() {
   return (

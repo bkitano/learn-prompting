@@ -90,13 +90,13 @@ const RunningTestCases = () => (
     </div>
     <br />
     <Typography>
-      Try it yourself. In the Prompt Editor, add a variable called "action"
-      within curly brackets and hit "Run cases" in the Test cases section. This
-      will execute the prompt on our whole set of compliance test cases.
+      Try it yourself. In the Prompt Editor, add a variable called {`"action"`}
+      within curly brackets and hit {`"Run cases"`} in the Test cases section.
+      This will execute the prompt on our whole set of compliance test cases.
     </Typography>
     <br />
     <Typography>
-      Ready to deepen your understanding? Click "Next" to continue.
+      Ready to deepen your understanding? Click {`"Next"`} to continue.
     </Typography>
   </>
 );

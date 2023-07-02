@@ -72,7 +72,7 @@ export default function Page() {
           >
             <div style={{ width: "80%" }}>
               <Typography variant="body1">
-                LLMs have taken the world by storm, and we're offering an
+                LLMs have taken the world by storm, and {`we're`} offering an
                 exciting journey into the heart of LLMs and Prompt Engineering.
                 This course is designed to equip you with the knowledge and
                 skills to converse efficiently with LLMs, opening up a world of
@@ -82,20 +82,20 @@ export default function Page() {
               <Typography variant="body1">
                 Through this course, you will learn to shape prompts that guide
                 LLMs in providing you with the answers you seek. By the end of
-                this course, you'll have a solid foundation in crafting prompts
+                this course, {`you'll`} have a solid foundation in crafting prompts
                 that make your interactions with LLMs more effective and
                 productive.
               </Typography>
               <br />
               <Typography variant="body1">
-                Whether you're a seasoned developer, a budding data scientist, a
+                Whether {`you're`} a seasoned developer, a budding data scientist, a
                 curious linguist, or simply someone passionate about AI and
                 language, this course has something to offer you.
               </Typography>
               <br />
               <Typography variant="body1">
                 Are you ready to step into the future of human-computer
-                interaction? Join us today and let's start this thrilling
+                interaction? Join us today and {`let's`} start this thrilling
                 journey together.
               </Typography>
             </div>
@@ -103,7 +103,7 @@ export default function Page() {
           <br />
           <Typography variant="h6" align="center" gutterBottom>
             Play around with our editor and test cases below to get a feel for
-            what you'll be learning in this course, and click Next when you're
+            what {`you'll`} be learning in this course, and click Next when {`you're`}
             ready to get started.
           </Typography>
           <br />

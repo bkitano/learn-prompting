@@ -8,7 +8,7 @@ const Conclusion = () => {
         Congrats, you made it!
       </Typography>
       <Typography variant="h5">
-        And that's a wrap! You've learned the basics of prompting.
+        {`And that's a wrap! You've learned the basics of prompting.`}
       </Typography>
       <br />
       <div
@@ -34,8 +34,8 @@ const Conclusion = () => {
       </Typography>
       <br />
       <Typography variant="body1">
-        See, these lessons only covered <em>prompting</em>, but there's a whole
-        other side to the equation:{" "}
+        See, these lessons only covered <em>prompting</em>, but {`there's`} a
+        whole other side to the equation:{" "}
         <strong>
           <em>prompt chaining</em>
         </strong>

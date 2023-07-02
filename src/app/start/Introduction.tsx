@@ -7,8 +7,8 @@ const Introduction = () => {
         Welcome to agents.blue!
       </Typography>
       <Typography variant="h5">
-        I'm Brian, I'm going to walk you through how LLMs work and how to
-        interact with them more effectively.
+        {`I'm`} Brian, {`I'm`} going to walk you through how LLMs work and how
+        to interact with them more effectively.
       </Typography>
       <br />
       <Typography variant="body1">
@@ -25,12 +25,12 @@ const Introduction = () => {
         with people, communicating clearly with LLMs improves how effective they
         are. The set of techniques for talking with LLMs is called{" "}
         <span style={{ fontWeight: "bold" }}>prompting</span>. In this set of
-        lessons, you'll learn how to use prompts to improve your interactions
+        lessons, {`you'll`} learn how to use prompts to improve your interactions
         with LLMs.
       </Typography>
       <br />
       <Typography>
-        Let's get started! Click the "Next" button below to continue.
+        {`Let's`} get started! Click the {`"Next"`} button below to continue.
       </Typography>
     </>
   );
