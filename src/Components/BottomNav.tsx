@@ -29,10 +29,9 @@ const pageNumber = (link: string): number => {
 
 const BottomNav = () => {
   const pathname = usePathname();
-  
+
   const [prevHref, nextHref] = pageRouter(pathname);
   const page = pageNumber(pathname);
-
 
   return (
     <AppBar position="static">
@@ -48,7 +47,9 @@ const BottomNav = () => {
           <Grid item>
             {prevHref && (
               <Link href={prevHref}>
-                <Button variant="contained">Previous</Button>
+                <Button variant="contained" color="secondary">
+                  Previous
+                </Button>
               </Link>
             )}
           </Grid>
@@ -56,7 +57,9 @@ const BottomNav = () => {
           <Grid item>
             {nextHref && (
               <Link href={nextHref}>
-                <Button variant="contained">Next</Button>
+                <Button variant="contained" color="secondary">
+                  Next
+                </Button>
               </Link>
             )}
           </Grid>
