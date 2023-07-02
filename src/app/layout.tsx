@@ -5,6 +5,8 @@ import { TopNav } from "@/Components/TopNav";
 import { Grid } from "@mui/material";
 import "./globals.css";
 import { Inter } from "next/font/google";
+import Script from "next/script";
+import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,16 +17,30 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <Script
+        strategy="afterInteractive"
+        src="https://www.googletagmanager.com/gtag/js?id=G-ED063SLL0V"
+      />
+      <Script
+        id="google-analytics"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ED063SLL0V');`,
+        }}
+      />
       <body className={inter.className}>
         <div>
           <div
-            style={
-              {
-                // these styles are so the header stays at the top
-                // of the viewport, no matter what
-                width: "100%",
-              }
-            }
+            style={{
+              // these styles are so the header stays at the top
+              // of the viewport, no matter what
+              width: "100%",
+            }}
           >
             <TopNav />
           </div>
