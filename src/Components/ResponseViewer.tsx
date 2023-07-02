@@ -1,4 +1,6 @@
 import { Box, CircularProgress, Typography } from "@mui/material";
+import { get } from "lodash";
+import { useRef } from "react";
 
 const ResponseViewer = (props: { loading?: boolean; value: string | null }) => {
   const { loading = false, value = null } = props;
@@ -16,16 +18,25 @@ const ResponseViewer = (props: { loading?: boolean; value: string | null }) => {
     response = <CircularProgress />;
   }
 
+  const responseViewerRef = useRef<HTMLDivElement>(null);
+
+  const shadowed =
+    get(responseViewerRef, "current.scrollHeight", 0) >
+    get(responseViewerRef, "current.clientHeight", 0);
+
   return (
     <Box
+      ref={responseViewerRef}
       style={{
-        backgroundColor: "blue",
-        border: "2px solid white",
+        maxHeight: "200px",
         borderRadius: "5px",
         padding: "10px",
-        maxHeight: "200px",
         overflow: "auto",
-        borderBottom: "",
+        backgroundColor: "blue",
+        borderTop: "2px solid white",
+        borderLeft: "2px solid white",
+        borderRight: "2px solid white",
+        borderBottom: shadowed ? "rgba(0, 0, 0, 0.5)" : "2px solid white",
       }}
     >
       {response}
