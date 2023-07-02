@@ -56,7 +56,7 @@ const Page = () => {
         }}
       >
         <Typography variant="h4">
-          <em>Join the thousands of people mastering LLMs.</em>
+          <em>Sign up for updates and new courses on mastering LLMs.</em>
         </Typography>
       </div>
       <br />
