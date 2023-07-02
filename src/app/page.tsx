@@ -82,15 +82,15 @@ export default function Page() {
               <Typography variant="body1">
                 Through this course, you will learn to shape prompts that guide
                 LLMs in providing you with the answers you seek. By the end of
-                this course, {`you'll`} have a solid foundation in crafting prompts
-                that make your interactions with LLMs more effective and
+                this course, {`you'll`} have a solid foundation in crafting
+                prompts that make your interactions with LLMs more effective and
                 productive.
               </Typography>
               <br />
               <Typography variant="body1">
-                Whether {`you're`} a seasoned developer, a budding data scientist, a
-                curious linguist, or simply someone passionate about AI and
-                language, this course has something to offer you.
+                Whether {`you're`} a seasoned developer, a budding data
+                scientist, a curious linguist, or simply someone passionate
+                about AI and language, this course has something to offer you.
               </Typography>
               <br />
               <Typography variant="body1">
@@ -102,9 +102,8 @@ export default function Page() {
           </div>
           <br />
           <Typography variant="h6" align="center" gutterBottom>
-            Play around with our editor and test cases below to get a feel for
-            what {`you'll`} be learning in this course, and click Next when {`you're`}
-            ready to get started.
+            Play around with our editor, then click Next when {`you're`} ready
+            to get started.
           </Typography>
           <br />
         </Typography>
@@ -113,7 +112,7 @@ export default function Page() {
         <Editor
           {...{
             initialValue: prompt || "",
-            placeholder: `Ask for a specific YES or NO answer in your prompt.`,
+            placeholder: `Try asking the model a question, like "What is the meaning of life?"`,
             onPromptChange: (value: string) => {
               setPrompt(value);
             },
