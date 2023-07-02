@@ -55,7 +55,7 @@ export default function Page() {
             </span>
           </Typography>
           <Typography variant="h4" align="center" gutterBottom>
-            Master the art of communicating with Large Language Models.
+            Master prompting with Large Language Models.
           </Typography>
           <Typography variant="h6" align="center" gutterBottom>
             Dive into the world of LLMs and prompts, where technology meets
