@@ -3,8 +3,30 @@
 import { Button, Grid, TextField, Typography } from "@mui/material";
 import { Conclusion } from "./Conclusion";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
+const validateEmail = (email: string) => {
+  // uses regex
+  return /(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9]))\.){3}(?:(2(5[0-5]|[0-4][0-9])|1[0-9][0-9]|[1-9]?[0-9])|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])/.test(
+    email
+  );
+};
 
 const Page = () => {
+  const router = useRouter();
+
+  const submitEmail = async (email: string) => {
+    await fetch(`${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/v1/subscribe`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email }),
+    });
+
+    router.push("/thanks");
+  };
+
   const [email, setEmail] = useState<string>("");
   return (
     <>
@@ -68,7 +90,6 @@ const Page = () => {
                 placeholder: "your email",
                 style: {
                   backgroundColor: "white",
-                  margin: "10px",
                   borderRadius: "5px",
                 },
               }}
@@ -77,14 +98,16 @@ const Page = () => {
           <Grid item>
             <Button
               variant="contained"
-              style={{
-                borderRadius: "10px",
-                padding: "13px",
-                width: "150px",
+              size="large"
+              onClick={(e) => {
+                e.preventDefault();
+                submitEmail(email);
               }}
-              onClick={(e) => {}}
+              style={{
+                opacity: validateEmail(email) ? 1 : 0.5,
+              }}
             >
-              <Typography variant="h5">Sign up</Typography>
+              Sign up
             </Button>
           </Grid>
         </Grid>
