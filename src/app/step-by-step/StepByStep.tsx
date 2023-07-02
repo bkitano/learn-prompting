@@ -23,15 +23,38 @@ export const StepByStep = () => (
     </Typography>
     <br />
     <EditorExample>
-      {`Q: John plans to sell all his toys and use the money to buy video games. He has 13 lego sets and he sells them for $15 each. He ends up buying 8 videogames for $20 each and has $5 left. How many lego sets does he still have?`}
+      {`Q: Leah had 32 chocolates and her
+sister had 42. If they ate 35, how
+many pieces do they have left in
+total?
+
+A: 39.
+
+Q: Julie is reading a 120-page book. Yesterday,
+she was able to read 12 pages and today, she
+read twice as many pages as yesterday. If she
+wants to read half of the remaining pages
+tomorrow, how many pages should she read?`}
     </EditorExample>
     <br />
     <EditorExample>
-      {`Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now? 
+      {`Q: Leah had 32 chocolates and her
+sister had 42. If they ate 35, how
+many pieces do they have left in
+total?
 
-A: Roger started with 5 balls. 2 cans of 3 tennis balls each is 6 tennis balls. 5 + 6 = 11. The answer is 11. 
-      
-Q: The cafeteria had 23 apples. If they used 20 to make lunch and bought 6 more, how many apples do they have?`}
+A: Originally, Leah had 32
+chocolates and her sister had 42.
+So in total they had 32 + 42 =
+74. After eating 35, they had 74
+- 35 = 39 pieces left in total. The
+answer is 39.
+
+Q: Julie is reading a 120-page book. Yesterday,
+she was able to read 12 pages and today, she
+read twice as many pages as yesterday. If she
+wants to read half of the remaining pages
+tomorrow, how many pages should she read?`}
     </EditorExample>
     <br />
     <Typography>
