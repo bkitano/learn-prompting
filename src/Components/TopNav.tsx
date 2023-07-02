@@ -16,6 +16,17 @@ const TopNav = () => (
           </span>
         </Link>
       </Typography>
+      <Link href="https://twitter.com/BrianKitano">
+        <Button
+          variant="contained"
+          color="inherit"
+          style={{
+            color: "black",
+          }}
+        >
+          @BrianKitano
+        </Button>
+      </Link>
     </Toolbar>
   </AppBar>
 );
