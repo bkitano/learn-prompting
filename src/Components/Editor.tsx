@@ -50,7 +50,6 @@ const Editor = (props: {
     inputs?: Record<string, string>
   ) => {
     if (!prompt) return;
-
     setLoading(true);
 
     const response = await getPromptCompletion({
@@ -62,6 +61,7 @@ const Editor = (props: {
 
     const { completion } = response;
     setResponseValue(completion);
+    setLoading(false);
   };
 
   return (

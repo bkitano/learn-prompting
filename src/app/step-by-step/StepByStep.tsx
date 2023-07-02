@@ -19,22 +19,24 @@ export const StepByStep = () => (
     <br />
     <Typography>
       Look at the difference here between asking the LLM to think step-by-step
-      versus not: 
+      versus not:
     </Typography>
+    <br />
     <EditorExample>
-      I bought four apples. I gave one to John, two to Mary, and received one from
-      Gabe. How many apples do I have now?
+      {`Q: John plans to sell all his toys and use the money to buy video games. He has 13 lego sets and he sells them for $15 each. He ends up buying 8 videogames for $20 each and has $5 left. How many lego sets does he still have?`}
     </EditorExample>
     <br />
     <EditorExample>
-      I bought four apples. I gave one to John, two to Mary, and received one from
-      Gabe. How many apples do I have now? Let's think step-by-step.
+      {`Q: Roger has 5 tennis balls. He buys 2 more cans of tennis balls. Each can has 3 tennis balls. How many tennis balls does he have now? 
+
+A: Roger started with 5 balls. 2 cans of 3 tennis balls each is 6 tennis balls. 5 + 6 = 11. The answer is 11. 
+      
+Q: The cafeteria had 23 apples. If they used 20 to make lunch and bought 6 more, how many apples do they have?`}
     </EditorExample>
     <br />
     <Typography>
       Practice this method by creating prompts that guide the LLM through the
-      problem-solving process in a step-wise manner. With every step, you're
-      becoming a more proficient prompt engineer.
+      problem-solving process in a step-wise manner.
     </Typography>
     <br />
     <Typography>Let's wrap this up! Click "Next" to continue.</Typography>
