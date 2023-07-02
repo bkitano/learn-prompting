@@ -119,14 +119,6 @@ export default function Page() {
           }}
         />
         <br />
-        <TestCasesView
-          {...{
-            testCases,
-            loading,
-            runCases: () => runCases(testCases),
-            runButtonDisabled: prompt === null || prompt === "",
-          }}
-        />
       </Grid>
     </Grid>
   );
