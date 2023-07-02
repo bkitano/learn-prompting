@@ -16,7 +16,6 @@ const TopNav = () => (
           </span>
         </Link>
       </Typography>
-      <Button color="inherit">Login</Button>
     </Toolbar>
   </AppBar>
 );

@@ -1,5 +1,40 @@
-import { Button, TextField, Typography } from "@mui/material";
+import { Button, Grid, TextField, Typography } from "@mui/material";
 import { TwitterIcon, TwitterShareButton } from "react-share";
+
+const TwitterButton = () => (
+  <TwitterShareButton
+    {...{
+      title: "I just finished agents.blue's free course on LLM prompting!",
+      url: "http://agents.blue",
+    }}
+  >
+    <div
+      style={{
+        backgroundColor: "#00aced",
+        padding: "10px 15px 10px 20px",
+        borderRadius: "32px",
+      }}
+    >
+      <Grid
+        container
+        spacing={2}
+        wrap="nowrap"
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Grid item>
+          <Typography>Share on Twitter</Typography>
+        </Grid>
+        <Grid item>
+          <TwitterIcon size={32} round={true} />
+        </Grid>
+      </Grid>
+    </div>
+  </TwitterShareButton>
+);
 
 const Conclusion = () => {
   return (
@@ -11,22 +46,11 @@ const Conclusion = () => {
         {`And that's a wrap! You've learned the basics of prompting.`}
       </Typography>
       <br />
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          width: "100%",
-        }}
-      >
-        <TwitterShareButton
-          {...{
-            title:
-              "I just finished agents.blue's free course on LLM prompting!",
-            url: "https://agents.blue",
-          }}
-        >
-          <TwitterIcon size={32} round={true} />
-        </TwitterShareButton>
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+      }}>
+      <TwitterButton />
       </div>
       <br />
       <Typography variant="h5">
@@ -102,7 +126,7 @@ const Conclusion = () => {
             fontWeight: "bold",
           }}
         >
-          agents.blue Plus
+          agents.blue
         </span>
         , and get access to the most up-to-date prompt engineering, research,
         and applications, as well as interactive resources, repositories, and
