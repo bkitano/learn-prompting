@@ -1,19 +1,26 @@
 "use client";
 
 import { Grid, Typography } from "@mui/material";
-import { Editor } from "@/Components/Editor";
-import { useState } from "react";
-import { TestCase } from "@/resources/testCases";
-import { testCases as defaultTestCases } from "@/resources/testCases";
+import { EditorExample } from "@/Components/EditorExample";
 
 export default function Page() {
-  const [prompt, setPrompt] = useState<string | null>(null);
-  const [testCases, setTestCases] = useState<TestCase[]>(defaultTestCases);
-  const [loading, setLoading] = useState<boolean>(false);
-
   return (
-    <Grid container padding={5} spacing={2}>
-      <Grid item xs={12} sm={6}>
+    <Grid
+      container
+      columns={{ xs: 12, sm: 12, md: 12, lg: 12, xl: 12 }}
+      padding={5}
+      spacing={2}
+    >
+      <Grid
+        item
+        {...{
+          xs: 12,
+          sm: 12,
+          md: 12,
+          lg: 6,
+          xl: 6,
+        }}
+      >
         <Typography>
           <Typography variant="h1" align="center" gutterBottom>
             agents
@@ -79,16 +86,17 @@ export default function Page() {
           <br />
         </Typography>
       </Grid>
-      <Grid item xs={12} sm={6}>
-        <Editor
-          {...{
-            initialValue: prompt || "",
-            placeholder: `Try asking the model a question, like "What is the meaning of life?"`,
-            onPromptChange: (value: string) => {
-              setPrompt(value);
-            },
-          }}
-        />
+      <Grid
+        item
+        {...{
+          xs: 12,
+          sm: 12,
+          md: 12,
+          lg: 6,
+          xl: 6,
+        }}
+      >
+        <EditorExample>{`Write a poem about {{topic}}.`}</EditorExample>
         <br />
       </Grid>
     </Grid>
