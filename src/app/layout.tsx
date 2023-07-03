@@ -3,19 +3,28 @@
 import { BottomNav } from "@/Components/BottomNav";
 import { TopNav } from "@/Components/TopNav";
 import {
+  CssBaseline,
   Grid,
   ThemeProvider,
   createTheme,
   responsiveFontSizes,
 } from "@mui/material";
-import "./globals.css";
 import { Inter } from "next/font/google";
 import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
-// let theme = createTheme();
-// theme = responsiveFontSizes(theme);
+let theme = createTheme({
+  palette: {
+    background: {
+      default: `rgb(30,30,30)`,
+    },
+    text: {
+      primary: `rgb(255,255,255)`,
+    },
+  },
+});
+theme = responsiveFontSizes(theme);
 
 export default function RootLayout({
   children,
@@ -41,7 +50,8 @@ export default function RootLayout({
         }}
       />
       <body className={inter.className}>
-        {/* <ThemeProvider theme={theme}> */}
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
           <div>
             <div
               style={{
@@ -65,7 +75,7 @@ export default function RootLayout({
               <BottomNav />
             </div>
           </div>
-        {/* </ThemeProvider> */}
+        </ThemeProvider>
       </body>
     </html>
   );
