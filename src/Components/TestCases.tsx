@@ -19,6 +19,7 @@ import {
   Grid,
   IconButton,
   Typography,
+  useTheme,
 } from "@mui/material";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 
@@ -46,6 +47,7 @@ import ExpandMore from "@mui/icons-material/ExpandMore";
 // };
 
 const TestCaseRow = (props: { testCase: TestCase; loading?: boolean }) => {
+  const theme = useTheme();
   const { testCase, loading } = props;
   const [open, setOpen] = useState(false);
   return (
@@ -62,14 +64,22 @@ const TestCaseRow = (props: { testCase: TestCase; loading?: boolean }) => {
             overflow: "hidden",
           }}
         >
-          {testCase.action}
+          <Typography color={theme.palette.text.secondary}>
+            {testCase.action}
+          </Typography>
         </TableCell>
-        <TableCell align="center">{String(testCase.correctAnswer)}</TableCell>
+        <TableCell style={{}} align="center">
+          <Typography color={theme.palette.text.secondary}>
+            {String(testCase.correctAnswer)}
+          </Typography>
+        </TableCell>
         <TableCell align="center">
           {loading ? (
             <CircularProgress />
           ) : loading === undefined ? null : (
-            testCase.response
+            <Typography color={theme.palette.text.secondary}>
+              {testCase.response}
+            </Typography>
           )}
         </TableCell>
       </TableRow>
@@ -94,6 +104,8 @@ const TestCasesView = (props: {
     loading = false,
   } = props;
 
+  const theme = useTheme();
+
   const [expanded, setExpanded] = useState<boolean>(open);
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -117,7 +129,9 @@ const TestCasesView = (props: {
                   </IconButton>
                 </Grid>
                 <Grid item>
-                  <Typography variant="h5">Test cases</Typography>
+                  <Typography variant="h5" color={theme.palette.text.secondary}>
+                    Test cases
+                  </Typography>
                 </Grid>
               </Grid>
             </Grid>
@@ -149,13 +163,24 @@ const TestCasesView = (props: {
                       style={{
                         fontFamily: "monospace",
                       }}
+                      color={theme.palette.text.secondary}
                     >{`{{action}}`}</Typography>
                   </TableCell>
                   <TableCell align="center">
-                    <Typography variant="h6">Correct Answer</Typography>
+                    <Typography
+                      variant="h6"
+                      color={theme.palette.text.secondary}
+                    >
+                      Correct Answer
+                    </Typography>
                   </TableCell>
                   <TableCell align="center">
-                    <Typography variant="h6">Model Response</Typography>
+                    <Typography
+                      variant="h6"
+                      color={theme.palette.text.secondary}
+                    >
+                      Model Response
+                    </Typography>
                   </TableCell>
                 </TableRow>
               </TableHead>
