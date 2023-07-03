@@ -9,8 +9,10 @@ import {
   createTheme,
   responsiveFontSizes,
 } from "@mui/material";
+import { get } from "lodash";
 import { Inter } from "next/font/google";
 import Script from "next/script";
+import { useRef } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +34,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const bottomRef = useRef(null);
+  const height = get(bottomRef, "current.clientHeight");
+
   return (
     <html lang="en">
       <Script
@@ -53,7 +58,12 @@ export default function RootLayout({
       <body className={inter.className}>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <div>
+          <div
+            style={{
+              backgroundColor: "green",
+              marginBottom: height,
+            }}
+          >
             <div
               style={{
                 // these styles are so the header stays at the top
@@ -65,6 +75,7 @@ export default function RootLayout({
             </div>
             {children}
             <div
+              ref={bottomRef}
               style={{
                 // these styles are so the footer stays at the bottom
                 // of the viewport, no matter what
