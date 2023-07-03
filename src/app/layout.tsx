@@ -60,7 +60,6 @@ export default function RootLayout({
           <CssBaseline />
           <div
             style={{
-              backgroundColor: "green",
               marginBottom: height,
             }}
           >

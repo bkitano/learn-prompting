@@ -35,8 +35,7 @@ export default function Page() {
           Master prompting with Large Language Models.
         </Typography>
         <Typography variant="h6" align="center" gutterBottom>
-          Dive into the world of LLMs and prompts, where technology meets
-          language in a dance of possibilities.
+          Learn prompting by doing, for free, in 10 minutes.
         </Typography>
       </Grid>
       <Grid
