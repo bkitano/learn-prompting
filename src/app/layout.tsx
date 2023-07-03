@@ -14,8 +14,8 @@ import Script from "next/script";
 
 const inter = Inter({ subsets: ["latin"] });
 
-let theme = createTheme();
-theme = responsiveFontSizes(theme);
+// let theme = createTheme();
+// theme = responsiveFontSizes(theme);
 
 export default function RootLayout({
   children,
@@ -41,7 +41,7 @@ export default function RootLayout({
         }}
       />
       <body className={inter.className}>
-        <ThemeProvider theme={theme}>
+        {/* <ThemeProvider theme={theme}> */}
           <div>
             <div
               style={{
@@ -65,7 +65,7 @@ export default function RootLayout({
               <BottomNav />
             </div>
           </div>
-        </ThemeProvider>
+        {/* </ThemeProvider> */}
       </body>
     </html>
   );
