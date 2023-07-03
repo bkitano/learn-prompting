@@ -21,24 +21,55 @@ export default function Page() {
           xl: 6,
         }}
       >
+        <Typography variant="h1" align="center" gutterBottom>
+          agents
+          <span
+            style={{
+              color: "blue",
+            }}
+          >
+            .blue
+          </span>
+        </Typography>
+        <Typography variant="h4" align="center" gutterBottom>
+          Master prompting with Large Language Models.
+        </Typography>
+        <Typography variant="h6" align="center" gutterBottom>
+          Dive into the world of LLMs and prompts, where technology meets
+          language in a dance of possibilities.
+        </Typography>
+      </Grid>
+      <Grid
+        item
+        {...{
+          xs: 12,
+          sm: 12,
+          md: 12,
+          lg: 6,
+          xl: 6,
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
+          <EditorExample>{`Write a poem about love.`}</EditorExample>
+        </div>
+        <br />
+      </Grid>
+      <Grid
+        item
+        {...{
+          xs: 12,
+          sm: 12,
+          md: 12,
+          lg: 6,
+          xl: 6,
+        }}
+      >
         <Typography>
-          <Typography variant="h1" align="center" gutterBottom>
-            agents
-            <span
-              style={{
-                color: "blue",
-              }}
-            >
-              .blue
-            </span>
-          </Typography>
-          <Typography variant="h4" align="center" gutterBottom>
-            Master prompting with Large Language Models.
-          </Typography>
-          <Typography variant="h6" align="center" gutterBottom>
-            Dive into the world of LLMs and prompts, where technology meets
-            language in a dance of possibilities.
-          </Typography>
           <br />
           <div
             style={{
@@ -85,19 +116,6 @@ export default function Page() {
           </Typography>
           <br />
         </Typography>
-      </Grid>
-      <Grid
-        item
-        {...{
-          xs: 12,
-          sm: 12,
-          md: 12,
-          lg: 6,
-          xl: 6,
-        }}
-      >
-        <EditorExample>{`Write a poem about {{topic}}.`}</EditorExample>
-        <br />
       </Grid>
     </Grid>
   );

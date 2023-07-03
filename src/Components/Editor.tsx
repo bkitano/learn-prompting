@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Container,
   Grid,
   InputBase,
   TextField,
@@ -64,8 +65,8 @@ const Editor = (props: {
   };
 
   return (
-    <>
-      <Grid container direction="row" spacing={2} justifyContent="right">
+    <Container maxWidth="md">
+      <Grid container direction="row" spacing={2} justifyContent="center">
         <Grid item xs={12}>
           <EditorView
             {...{
@@ -82,7 +83,7 @@ const Editor = (props: {
           <ResponseViewer value={responseValue} loading={loading} />
         </Grid>
       </Grid>
-    </>
+    </Container>
   );
 };
 
