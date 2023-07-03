@@ -1,44 +1,15 @@
 "use client";
 
-import { Button, Grid, Typography } from "@mui/material";
+import { Grid, Typography } from "@mui/material";
 import { Editor } from "@/Components/Editor";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { TestCase } from "@/resources/testCases";
 import { testCases as defaultTestCases } from "@/resources/testCases";
-import useSessionStorage from "@/hooks/useSessionStorage";
-import { TestCasesView } from "@/Components/TestCases";
 
 export default function Page() {
   const [prompt, setPrompt] = useState<string | null>(null);
   const [testCases, setTestCases] = useState<TestCase[]>(defaultTestCases);
   const [loading, setLoading] = useState<boolean>(false);
-
-  const runCases = async (cases: TestCase[]) => {
-    setLoading(true);
-    const response = await fetch(
-      `${process.env.NEXT_PUBLIC_API_ENDPOINT}/api/v1/batch`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          prompt: prompt,
-          inputs: cases,
-        }),
-      }
-    );
-
-    const { completions } = await response.json();
-    const newCases: TestCase[] = cases.map((testCase, index) => {
-      return {
-        ...testCase,
-        response: completions[index].completion.text,
-      };
-    });
-    setLoading(false);
-    setTestCases(newCases);
-  };
 
   return (
     <Grid container padding={5} spacing={2}>

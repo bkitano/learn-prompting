@@ -2,13 +2,20 @@
 
 import { BottomNav } from "@/Components/BottomNav";
 import { TopNav } from "@/Components/TopNav";
-import { Grid } from "@mui/material";
+import {
+  Grid,
+  ThemeProvider,
+  createTheme,
+  responsiveFontSizes,
+} from "@mui/material";
 import "./globals.css";
 import { Inter } from "next/font/google";
 import Script from "next/script";
-import { useRouter } from "next/navigation";
 
 const inter = Inter({ subsets: ["latin"] });
+
+let theme = createTheme();
+theme = responsiveFontSizes(theme);
 
 export default function RootLayout({
   children,
@@ -34,29 +41,31 @@ export default function RootLayout({
         }}
       />
       <body className={inter.className}>
-        <div>
-          <div
-            style={{
-              // these styles are so the header stays at the top
-              // of the viewport, no matter what
-              width: "100%",
-            }}
-          >
-            <TopNav />
+        <ThemeProvider theme={theme}>
+          <div>
+            <div
+              style={{
+                // these styles are so the header stays at the top
+                // of the viewport, no matter what
+                width: "100%",
+              }}
+            >
+              <TopNav />
+            </div>
+            {children}
+            <div
+              style={{
+                // these styles are so the footer stays at the bottom
+                // of the viewport, no matter what
+                position: "fixed",
+                bottom: 0,
+                width: "100%",
+              }}
+            >
+              <BottomNav />
+            </div>
           </div>
-          {children}
-          <div
-            style={{
-              // these styles are so the footer stays at the bottom
-              // of the viewport, no matter what
-              position: "fixed",
-              bottom: 0,
-              width: "100%",
-            }}
-          >
-            <BottomNav />
-          </div>
-        </div>
+        </ThemeProvider>
       </body>
     </html>
   );
