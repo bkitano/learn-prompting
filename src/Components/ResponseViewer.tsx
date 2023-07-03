@@ -12,7 +12,7 @@ const ResponseViewer = (props: { loading?: boolean; value: string | null }) => {
   );
 
   if (value) {
-    response = <Typography>{value}</Typography>;
+    response = <Typography>{value.trim()}</Typography>;
   }
   if (loading) {
     response = <CircularProgress />;
@@ -37,6 +37,7 @@ const ResponseViewer = (props: { loading?: boolean; value: string | null }) => {
         borderLeft: "2px solid white",
         borderRight: "2px solid white",
         borderBottom: shadowed ? "rgba(0, 0, 0, 0.5)" : "2px solid white",
+        whiteSpace: "pre-wrap",
       }}
     >
       {response}
