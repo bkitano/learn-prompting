@@ -87,6 +87,45 @@ const Editor = (props: {
   );
 };
 
+const PromptVariableField = (props: {
+  promptVariableKey: string;
+  promptVariableValue: string | null | undefined;
+  setPromptVariableValue: (value: string) => void;
+}) => {
+  const { promptVariableKey, promptVariableValue, setPromptVariableValue } =
+    props;
+  return (
+    <Box
+      style={{
+        backgroundColor: "white",
+        border: "2px solid white",
+        borderRadius: "5px",
+      }}
+      onClick={(e) => {
+        e.stopPropagation();
+      }}
+    >
+      <TextField
+        value={promptVariableValue}
+        onChange={(e) => {
+          e.preventDefault();
+          console.log({ promptVariableValue });
+          console.log(e.target.value);
+          setPromptVariableValue(e.target.value);
+        }}
+        variant="outlined"
+        label={promptVariableKey}
+        autoComplete="off"
+        inputProps={{
+          style: {
+            color: "black",
+          },
+        }}
+      />
+    </Box>
+  );
+};
+
 const EditorView = (props: {
   initialValue: string;
   placeholder?: string;
@@ -112,7 +151,7 @@ const EditorView = (props: {
     setValue(initialValue);
   }, [initialValue]);
 
-  const [promptVariableSection, setPromptVariableSection] = useState<any>(null);
+  // const [promptVariableSection, setPromptVariableSection] = useState<any>(null);
   const [promptVariableKey, setPromptVariableKey] = useState<string | null>(
     null
   );
@@ -130,38 +169,12 @@ const EditorView = (props: {
         const variables = matches.map((match) => match.replace(/{{|}}/g, ""));
         if (matches.length === 1) {
           setPromptVariableKey(variables[0]);
-          setPromptVariableSection(
-            <Box
-              style={{
-                backgroundColor: "white",
-                border: "2px solid white",
-                borderRadius: "5px",
-              }}
-              onClick={(e) => {
-                e.stopPropagation();
-              }}
-            >
-              <TextField
-                onChange={(e) => {
-                  setPromptVariableValue(e.target.value);
-                }}
-                value={promptVariableValue}
-                variant="outlined"
-                label={variables[0]}
-                autoComplete="off"
-              />
-            </Box>
-          );
-        } else if (matches.length > 1) {
-          setPromptVariableSection(
-            <Box>
-              <Typography>Error: too many prompt variables.</Typography>
-            </Box>
-          );
+        } else {
+          setPromptVariableKey(null);
+          setPromptVariableValue(undefined);
         }
       }
     } else {
-      setPromptVariableSection(null);
       setPromptVariableKey(null);
       setPromptVariableValue(undefined);
     }
@@ -231,13 +244,21 @@ const EditorView = (props: {
             style={{
               width: "100%",
               display: "flex",
-              justifyContent: promptVariableSection
-                ? "space-between"
-                : "flex-end",
+              justifyContent: promptVariableKey ? "space-between" : "flex-end",
               alignItems: "end",
             }}
           >
-            <div>{promptVariableSection}</div>
+            <div>
+              {promptVariableKey ? (
+                <PromptVariableField
+                  {...{
+                    setPromptVariableValue,
+                    promptVariableKey,
+                    promptVariableValue,
+                  }}
+                />
+              ) : null}
+            </div>
             <Button
               variant="contained"
               disabled={runDisabled || prompt.length === 0}
