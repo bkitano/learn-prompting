@@ -165,14 +165,15 @@ const EditorView = (props: {
     if (prompt) {
       const regex = /{{(.*?)}}/g;
       const matches = prompt.match(regex);
-      if (matches) {
+      console.log(matches);
+      if (matches && matches.length === 1) {
         const variables = matches.map((match) => match.replace(/{{|}}/g, ""));
         if (matches.length === 1) {
           setPromptVariableKey(variables[0]);
-        } else {
-          setPromptVariableKey(null);
-          setPromptVariableValue(undefined);
         }
+      } else {
+        setPromptVariableKey(null);
+        setPromptVariableValue(undefined);
       }
     } else {
       setPromptVariableKey(null);
