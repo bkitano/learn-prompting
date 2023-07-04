@@ -83,16 +83,16 @@ export default function Page() {
                 If you want to build a chatbot, automate your emails, or
                 anything else with LLMs, you need to know how to use them.
                 Prompting is how you instruct LLMs to do what you want, and the
-                difference between a good prompt and a bad prompt can be the
-                difference between success and failure.
+                difference between a good prompt and a great prompt can be
+                faster development, better output, and a more reliable product.
               </Typography>
               <br />
               <Typography variant="body1">
                 agents.blue is the fastest, easiest, and interactive way to
                 learn how to prompt LLMs. You can learn by doing, and you can do
                 it in 10 minutes, without any coding required. From start to
-                finish, {`you'll`} learn how to prompt LLMs, and use your new skills
-                to build your own projects.
+                finish, {`you'll`} learn how to prompt LLMs, and use your new
+                skills to build your own projects.
               </Typography>
             </div>
           </div>
