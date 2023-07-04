@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { get } from "lodash";
 import { Inter } from "next/font/google";
+import Head from "next/head";
 import Script from "next/script";
 import { useRef } from "react";
 
@@ -39,6 +40,14 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <Head>
+        <title>agents.blue</title>
+        <meta name="description" content="agents.blue" />
+        <meta property="og:title" content="agents.blue" />
+        <meta property="og:description" content="agents.blue" />
+        <meta property="og:image" content="/og-image.png" />
+        <meta property="og:url" content="http://agents.blue" />
+      </Head>
       <Script
         strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-ED063SLL0V"
