@@ -1,4 +1,5 @@
 import { EditorExample } from "@/Components/EditorExample";
+import { EditorTextExample } from "@/Components/EditorTextExample";
 import { Typography } from "@mui/material";
 
 export const OutputFormatting = () => (
@@ -46,13 +47,13 @@ FORMAT:
       output, where the XML fields are
     </Typography>
     <br />
-    <EditorExample>
+    <EditorTextExample>
       {`<response>
-    <compliance_status>TRUE|FALSE</compliance_status>
-    <reason>REASON</reason>
+  <compliance_status>TRUE|FALSE</compliance_status>
+  <reason>REASON</reason>
 </response>
 `}
-    </EditorExample>
+    </EditorTextExample>
     <br />
     <Typography>then click {`"Run"`}.</Typography>
     <br />

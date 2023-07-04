@@ -24,13 +24,13 @@ export const AskingForSpecifics = () => (
     <br />
     <Typography variant="body1">
       We can ask the LLM for a specific format for our answer. In our case, we
-      want a <span style={{ fontWeight: "bold" }}>YES|NO</span> response from
+      want a <span style={{ fontWeight: "bold" }}>YES or NO</span> response from
       the LLM, along with an explanation if the answer is NO. This gives us a
       clearer, more concise decision making framework.
     </Typography>
     <br />
     <Typography>
-      {`Add instructions to your prompt that ask for a YES or NO response, then
+      {`Add instructions to your compliance prompt that ask for a YES or NO response, then
       click "Run". This is how you start shaping your LLM's responses to meet
       your needs.`}
     </Typography>

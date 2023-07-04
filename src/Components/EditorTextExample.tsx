@@ -10,6 +10,8 @@ const EditorTextExample = ({ children }: { children: string }) => {
         border: "2px solid white",
         borderRadius: "5px",
         whiteSpace: "pre-wrap",
+        width: "100%",
+        overflow: "auto",
       }}
     >
       <Typography

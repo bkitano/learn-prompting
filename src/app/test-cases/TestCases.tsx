@@ -51,7 +51,7 @@ export const TestCases = () => (
       You can view different test cases and their classifications in the{" "}
       <span style={{ fontWeight: "bold" }}>Test case viewer</span>. For now,
       observe and get familiar with the interface and test case classifications.
-      {`Don't`} worry, {`you'll`} get to interact more with it in the coming lessons!
+      {` Don't`} worry, {`you'll`} get to interact more with it in the coming lessons!
     </Typography>
     <br />
     <Typography>
