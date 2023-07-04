@@ -80,31 +80,19 @@ export default function Page() {
           >
             <div style={{ width: "80%" }}>
               <Typography variant="body1">
-                LLMs have taken the world by storm, and {`we're`} offering an
-                exciting journey into the heart of LLMs and Prompt Engineering.
-                This course is designed to equip you with the knowledge and
-                skills to converse efficiently with LLMs, opening up a world of
-                opportunities.
+                If you want to build a chatbot, automate your emails, or
+                anything else with LLMs, you need to know how to use them.
+                Prompting is how you instruct LLMs to do what you want, and the
+                difference between a good prompt and a bad prompt can be the
+                difference between success and failure.
               </Typography>
               <br />
               <Typography variant="body1">
-                Through this course, you will learn to shape prompts that guide
-                LLMs in providing you with the answers you seek. By the end of
-                this course, {`you'll`} have a solid foundation in crafting
-                prompts that make your interactions with LLMs more effective and
-                productive.
-              </Typography>
-              <br />
-              <Typography variant="body1">
-                Whether {`you're`} a seasoned developer, a budding data
-                scientist, a curious linguist, or simply someone passionate
-                about AI and language, this course has something to offer you.
-              </Typography>
-              <br />
-              <Typography variant="body1">
-                Are you ready to step into the future of human-computer
-                interaction? Join us today and {`let's`} start this thrilling
-                journey together.
+                agents.blue is the fastest, easiest, and interactive way to
+                learn how to prompt LLMs. You can learn by doing, and you can do
+                it in 10 minutes, without any coding required. From start to finish,
+                you'll learn how to prompt LLMs, and you'll be able to use your
+                new skills to build your own projects. 
               </Typography>
             </div>
           </div>
