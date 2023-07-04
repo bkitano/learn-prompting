@@ -90,9 +90,9 @@ export default function Page() {
               <Typography variant="body1">
                 agents.blue is the fastest, easiest, and interactive way to
                 learn how to prompt LLMs. You can learn by doing, and you can do
-                it in 10 minutes, without any coding required. From start to finish,
-                you'll learn how to prompt LLMs, and you'll be able to use your
-                new skills to build your own projects. 
+                it in 10 minutes, without any coding required. From start to
+                finish, {`you'll`} learn how to prompt LLMs, and use your new skills
+                to build your own projects.
               </Typography>
             </div>
           </div>
