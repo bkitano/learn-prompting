@@ -44,7 +44,10 @@ export default function RootLayout({
         <title>agents.blue</title>
         <meta name="description" content="agents.blue" />
         <meta property="og:title" content="agents.blue" />
-        <meta property="og:description" content="agents.blue" />
+        <meta
+          property="og:description"
+          content="Learn prompting in <10 minutes."
+        />
         <meta property="og:image" content="/og-image.png" />
         <meta property="og:url" content="http://agents.blue" />
       </Head>
